@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>바디움 광고·콘텐츠 현황</title>
+<meta property="og:title" content="바디움 광고·콘텐츠 현황">
+<meta property="og:description" content="8~11월 광고 성과와 숏폼 제작 진행을 한 화면에">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* 레이아웃: 위에서 아래로 요약 → 흐름 → 지점 → 콘텐츠 → 연결, 한 줄 기둥 */
+:root{
+  --bg:#f5f6f4; --card:#ffffff; --ink:#18201c; --mute:#5f6b65; --line:#dde2de;
+  --acc:#1f7a5a; --acc2:#c2562c; --soft:#e6f1ec; --warn:#b3261e; --ok:#1f7a5a;
+  --f-body:"Noto Sans KR",system-ui,-apple-system,sans-serif;
+  --f-num:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111614; --card:#1a201d; --ink:#e8eeea; --mute:#9aa7a0; --line:#2c3531;
+  --acc:#5cc59c; --acc2:#f08a5d; --soft:#1d2f27; --warn:#ff8a80; --ok:#5cc59c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111614; --card:#1a201d; --ink:#e8eeea; --mute:#9aa7a0; --line:#2c3531;
+  --acc:#5cc59c; --acc2:#f08a5d; --soft:#1d2f27; --warn:#ff8a80; --ok:#5cc59c; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 var(--f-body);-webkit-text-size-adjust:100%}
+.wrap{max-width:1040px;margin:0 auto;padding-block:28px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:22px}
+h1{font-size:clamp(24px,5vw,34px);font-weight:900;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:19px;font-weight:800;margin:0 0 4px;letter-spacing:-.01em;text-wrap:balance}
+.sub{color:var(--mute);margin:4px 0 0;font-size:14px}
+.eyebrow{font-size:12px;letter-spacing:.08em;color:var(--acc);font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media(max-width:720px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi .lab{font-size:13px;color:var(--mute)}
+.kpi .val{font-size:clamp(22px,4vw,28px);font-weight:700;margin-top:2px}
+.kpi .chg{font-size:12.5px;margin-top:2px}
+.up{color:var(--ok)} .down{color:var(--warn)}
+.note{font-size:12.5px;color:var(--mute);margin-top:8px}
+.chart{width:100%;overflow:hidden;position:relative}
+.chart svg{display:block;width:100%;height:auto}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--mute);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;line-height:1.5;padding:8px 10px;border-radius:8px;max-width:240px;opacity:0;transition:opacity .12s;z-index:5}
+.tip b{font-weight:700}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px}
+@media(max-width:820px){.two{grid-template-columns:minmax(0,1fr)}}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-size:12.5px;color:var(--mute);font-weight:500}
+.tw{overflow-x:auto}
+.bar{display:inline-block;height:8px;border-radius:4px;background:var(--acc);vertical-align:middle;margin-left:6px}
+.bar.hi{background:var(--acc2)}
+.events{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:6px;font-size:13.5px}
+.events li{display:grid;grid-template-columns:26px 54px minmax(0,1fr);gap:6px;align-items:baseline}
+.events .dot{width:20px;height:20px;border-radius:50%;background:var(--acc2);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center}
+.events .d{color:var(--mute);font-family:var(--f-num);font-size:12.5px}
+.kb{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+@media(max-width:820px){.kb{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.col{background:var(--soft);border-radius:12px;padding:10px;min-width:0}
+.col h3{margin:0 0 8px;font-size:13.5px;display:flex;justify-content:space-between}
+.col h3 span{font-family:var(--f-num)}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:12.5px;margin-top:6px;line-height:1.4}
+.chip small{display:block;color:var(--mute);font-size:11px}
+.funnel{display:flex;gap:8px;align-items:stretch;flex-wrap:wrap;margin-top:12px}
+.fstep{flex:1 1 120px;background:var(--soft);border-radius:10px;padding:10px 12px}
+.fstep b{display:block;font-size:22px;font-family:var(--f-num)}
+.fstep span{font-size:12.5px;color:var(--mute)}
+.help{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
+@media(max-width:720px){.help{grid-template-columns:minmax(0,1fr)}}
+.help div{border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.help b{display:block;margin-bottom:2px}
+.help p{margin:0;font-size:13.5px;color:var(--mute)}
+.callout{border-left:4px solid var(--acc2);background:var(--soft);padding:12px 14px;border-radius:0 10px 10px 0;font-size:14.5px}
+footer{color:var(--mute);font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">바디움 · 2026년 8월~11월 15일</div>
+  <h1>광고와 콘텐츠, 한 화면에 이어 보기</h1>
+  <p class="sub">공유받은 퍼포먼스 시트와 크리에이터 시트 두 개를 합쳐 정리했어요. 금액은 VAT 포함, 11월은 15일까지예요.</p>
+</header>
+
+<section class="kpis" id="kpis"></section>
+
+<section class="card" id="monthly">
+  <h2>월별 흐름</h2>
+  <p class="sub">9월에 비싸던 신청 1건당 비용(CPA)이 10월에 절반 아래로 떨어졌어요.</p>
+  <div class="chart" id="mchart"></div>
+  <div class="legend"><span><i style="background:var(--acc)"></i>신청 수(건)</span><span><i style="background:var(--acc2)"></i>CPA(원)</span></div>
+  <p class="note">8월은 메타만, 9월부터는 메타와 네이버 브랜드검색 합계예요.</p>
+</section>
+
+<section class="card" id="daily">
+  <h2>날짜별 신청과 소재 변경</h2>
+  <p class="sub">10월 1일~11월 15일. 주황 번호는 시트 메모에 적힌 소재·예산 변경이에요. 막대를 누르면 그날 숫자가 나와요.</p>
+  <div class="chart" id="dchart"><div class="tip" id="dtip"></div></div>
+  <div class="legend"><span><i style="background:var(--acc)"></i>신청 수</span><span><i style="background:var(--acc2)"></i>CPA</span></div>
+  <ul class="events" id="events"></ul>
+</section>
+
+<div class="two">
+<section class="card" id="branch">
+  <h2>지점 비교 (CPA)</h2>
+  <p class="sub">11월 수원점이 다른 두 지점보다 신청 1건에 1만 원 넘게 더 들어요.</p>
+  <div class="tw"><table id="btable"></table></div>
+</section>
+<section class="card" id="budget">
+  <h2>11월 예산 진행</h2>
+  <p class="sub">한 달 예산 대비 15일까지 쓴 비율이에요.</p>
+  <div id="budgetbox"></div>
+</section>
+</div>
+
+<section class="card" id="content">
+  <h2>숏폼 콘텐츠 진행판</h2>
+  <p class="sub">크리에이터 섭외부터 최종 영상까지. 이름 대신 콘텐츠 유형으로 적었어요.</p>
+  <div class="funnel" id="funnel"></div>
+  <div class="kb" id="kb" style="margin-top:14px"></div>
+</section>
+
+<section class="card" id="link">
+  <h2>지금 따로 떨어져 있는 것</h2>
+  <div class="callout">광고 숫자는 퍼포먼스 시트에, 어떤 영상을 언제 올렸는지는 크리에이터 시트와 메모 칸에 나뉘어 있어요. 그래서 <b>"어떤 영상이 신청을 만들었나"</b>를 보려면 사람이 두 시트를 오가며 맞춰 봐야 해요.</div>
+  <div class="help">
+    <div><b>매일 아침 요약</b><p>어제 신청 수, CPA, 지점별 변화를 한 줄로 정리해 보내기</p></div>
+    <div><b>소재별 성적표</b><p>메모에 흩어진 "몇 차 소재 시작·종료"를 날짜별 성과와 묶어 영상마다 점수 매기기</p></div>
+    <div><b>이상 신호 표시</b><p>예: 11/5 수원 CPA 94,979원처럼 튀는 날을 바로 표시</p></div>
+    <div><b>제작 진행판 자동 갱신</b><p>섭외·기획·촬영·편집·완료 상태를 시트에서 읽어 진행판으로</p></div>
+  </div>
+  <p class="note">위 네 가지는 제안이에요. 바디움 계정이나 시트에는 아무것도 연결하거나 고치지 않았어요.</p>
+</section>
+
+<footer>원본: 바디움 퍼포먼스 통합 공유 시트, 크리에이터 리스트 및 캠페인 현황 (2026-11-16 읽음)</footer>
+</div>
+
+<script>
+(function(){
+var M=[
+ {m:'8월',imp:127734,clk:4682,cost:7625824,lead:333,cpa:22900,cvr:7.11},
+ {m:'9월',imp:325045,clk:8782,cost:19199780,lead:536,cpa:35820,cvr:6.10},
+ {m:'10월',imp:326880,clk:13289,cost:15119975,lead:946,cpa:15983,cvr:7.12},
+ {m:'11월*',imp:127592,clk:5477,cost:7426486,lead:386,cpa:19240,cvr:7.05}
+];
+var B=[
+ {b:'서초본점',s:[37695,16561,17687],l:[195,309,134]},
+ {b:'잠실점',s:[33218,13770,15611],l:[203,431,172]},
+ {b:'수원점',s:[37000,19747,29641],l:[138,206,80]}
+];
+var OL=[26,14,22,24,29,55,23,25,43,19,42,46,25,24,26,26,25,38,28,28,45,30,38,35,39,25,29,35,36,25,21];
+var OC=[24843,28260,20631,23675,16960,11298,18779,15415,12478,18939,12458,8389,14595,16860,14824,14537,18567,13414,12798,12178,10328,15602,13653,15073,17373,25591,17684,17486,18724,22594,21611];
+var NL=[28,26,24,27,31,13,24,38,28,22,19,27,34,17,28];
+var NC=[24229,18892,19266,15705,16743,38471,18118,18254,16626,22052,22721,17524,12978,21103,20262];
+var D=[];
+OL.forEach(function(v,i){D.push({d:'10/'+(i+1),l:v,c:OC[i]})});
+NL.forEach(function(v,i){D.push({d:'11/'+(i+1),l:v,c:NC[i]})});
+var EV=[
+ ['10/1','4차 소재 테스트 시작'],
+ ['10/6','스케일업 캠페인 시작, 수원점 광고 재개'],
+ ['10/8','5차 소재 테스트 시작'],
+ ['10/12','인플루언서 릴스 영향으로 홈페이지 신청 급증 (CPA 최저 8,389원)'],
+ ['10/15','6차 소재 시작'],
+ ['10/21','스케일업 2차: 복부고민형 20초 영상'],
+ ['10/23','7차 소재 테스트 시작'],
+ ['10/26','스케일업 3차: 검증후기형 위닝 소재를 전 지점에'],
+ ['11/5','8차 소재 테스트, 스케일업 4차 시작'],
+ ['11/11','수원 테스트 정리, 예산을 스케일업 2차로 통합'],
+ ['11/13','9차 소재 테스트 시작']
+];
+var css=getComputedStyle(document.documentElement);
+function C(n){return css.getPropertyValue(n).trim()}
+function f(n){return n.toLocaleString('ko-KR')}
+function el(t,a,txt){var e=document.createElementNS('http://www.w3.org/2000/svg',t);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e}
+
+/* KPI */
+var k=document.getElementById('kpis');
+[['10월 신청',f(946)+'건','9월보다 76% 늘었어요','up'],
+ ['10월 CPA',f(15983)+'원','9월 35,820원에서 55% 내려갔어요','up'],
+ ['11월 신청 (15일)',f(386)+'건','하루 평균 약 26건','' ],
+ ['11월 CPA',f(19240)+'원','10월보다 20% 올랐어요','down']
+].forEach(function(r){var d=document.createElement('div');d.className='card kpi';
+ d.innerHTML='<div class="lab"></div><div class="val num"></div><div class="chg"></div>';
+ d.children[0].textContent=r[0];d.children[1].textContent=r[1];d.children[2].textContent=r[2];if(r[3])d.children[2].className='chg '+r[3];k.appendChild(d)});
+
+/* monthly */
+function monthly(){
+ var box=document.getElementById('mchart');box.innerHTML='';
+ var W=Math.max(300,box.clientWidth),H=240,p={l:40,r:52,t:18,b:28};
+ var s=el('svg',{viewBox:'0 0 '+W+' '+H});
+ var iw=W-p.l-p.r,ih=H-p.t-p.b,bw=iw/M.length;
+ var maxL=1000,maxC=40000;
+ [0,250,500,750,1000].forEach(function(v){var y=p.t+ih-ih*v/maxL;s.appendChild(el('line',{x1:p.l,x2:W-p.r,y1:y,y2:y,stroke:C('--line')}));s.appendChild(el('text',{x:p.l-6,y:y+4,'text-anchor':'end','font-size':11,fill:C('--mute')},v))});
+ [0,20000,40000].forEach(function(v){var y=p.t+ih-ih*v/maxC;s.appendChild(el('text',{x:W-p.r+6,y:y+4,'font-size':11,fill:C('--acc2')},(v/10000)+'만'))});
+ var pts=[];
+ M.forEach(function(d,i){var x=p.l+bw*i+bw*.25,w=bw*.5,h=ih*d.lead/maxL;
+  s.appendChild(el('rect',{x:x,y:p.t+ih-h,width:w,height:h,rx:4,fill:C('--acc'),opacity:.85}));
+  s.appendChild(el('text',{x:x+w/2,y:p.t+ih-h-5,'text-anchor':'middle','font-size':12,'font-weight':700,fill:C('--ink')},f(d.lead)));
+  s.appendChild(el('text',{x:x+w/2,y:H-8,'text-anchor':'middle','font-size':12,fill:C('--mute')},d.m));
+  pts.push([x+w/2,p.t+ih-ih*d.cpa/maxC,d.cpa])});
+ s.appendChild(el('polyline',{points:pts.map(function(q){return q[0]+','+q[1]}).join(' '),fill:'none',stroke:C('--acc2'),'stroke-width':2.5}));
+ pts.forEach(function(q){s.appendChild(el('circle',{cx:q[0],cy:q[1],r:4.5,fill:C('--card'),stroke:C('--acc2'),'stroke-width':2.5}));
+  s.appendChild(el('text',{x:q[0]+8,y:q[1]-7,'font-size':11.5,fill:C('--acc2'),'font-weight':700,stroke:C('--card'),'stroke-width':4,'paint-order':'stroke'},f(q[2])))});
+ box.appendChild(s);
+}
+
+/* daily */
+function daily(){
+ var box=document.getElementById('dchart'),tip=document.getElementById('dtip');
+ [].slice.call(box.querySelectorAll('svg')).forEach(function(n){n.remove()});
+ var W=Math.max(300,box.clientWidth),H=W<500?250:280,p={l:30,r:40,t:26,b:26};
+ var s=el('svg',{viewBox:'0 0 '+W+' '+H});
+ var iw=W-p.l-p.r,ih=H-p.t-p.b,n=D.length,bw=iw/n,maxL=60,maxC=40000;
+ [0,20,40,60].forEach(function(v){var y=p.t+ih-ih*v/maxL;s.appendChild(el('line',{x1:p.l,x2:W-p.r,y1:y,y2:y,stroke:C('--line')}));s.appendChild(el('text',{x:p.l-5,y:y+4,'text-anchor':'end','font-size':10.5,fill:C('--mute')},v))});
+ [0,20000,40000].forEach(function(v){var y=p.t+ih-ih*v/maxC;s.appendChild(el('text',{x:W-p.r+5,y:y+4,'font-size':10.5,fill:C('--acc2')},(v/10000)+'만'))});
+ var line=[];
+ D.forEach(function(d,i){var x=p.l+bw*i,h=ih*d.l/maxL;
+  var r=el('rect',{x:x+bw*.15,y:p.t+ih-h,width:Math.max(1,bw*.7),height:h,rx:1.5,fill:C('--acc'),opacity:.75});
+  var hit=el('rect',{x:x,y:p.t,width:bw,height:ih,fill:'transparent',style:'cursor:pointer'});
+  function show(){var ev=EV.filter(function(e){return e[0]===d.d})[0];
+   tip.innerHTML='';var b=document.createElement('b');b.textContent=d.d;tip.appendChild(b);
+   tip.appendChild(document.createTextNode(' · 신청 '+d.l+'건 · CPA '+f(d.c)+'원'));
+   if(ev){tip.appendChild(document.createElement('br'));tip.appendChild(document.createTextNode(ev[1]))}
+   var bx=box.clientWidth,tx=(x+bw/2)/W*bx;tip.style.left=Math.min(Math.max(0,tx-120),bx-240)+'px';tip.style.top='0px';tip.style.opacity=1;
+   r.setAttribute('opacity',1)}
+  function hide(){tip.style.opacity=0;r.setAttribute('opacity',.75)}
+  hit.addEventListener('mouseenter',show);hit.addEventListener('mouseleave',hide);hit.addEventListener('click',show);
+  s.appendChild(r);s.appendChild(hit);
+  line.push([x+bw/2,p.t+ih-ih*Math.min(d.c,maxC)/maxC]);
+  if(d.d==='10/1'||d.d==='10/15'||d.d==='11/1'||d.d==='11/15')s.appendChild(el('text',{x:x+bw/2,y:H-8,'text-anchor':'middle','font-size':10.5,fill:C('--mute')},d.d));
+ });
+ s.appendChild(el('polyline',{points:line.map(function(q){return q[0]+','+q[1]}).join(' '),fill:'none',stroke:C('--acc2'),'stroke-width':1.8,'pointer-events':'none'}));
+ EV.forEach(function(e,j){var i=D.findIndex(function(d){return d.d===e[0]});if(i<0)return;var x=p.l+bw*i+bw/2;
+  s.appendChild(el('line',{x1:x,x2:x,y1:p.t-4,y2:p.t+ih,stroke:C('--acc2'),'stroke-dasharray':'2 3',opacity:.6,'pointer-events':'none'}));
+  s.appendChild(el('circle',{cx:x,cy:p.t-12,r:8,fill:C('--acc2'),'pointer-events':'none'}));
+  s.appendChild(el('text',{x:x,y:p.t-8.5,'text-anchor':'middle','font-size':9.5,'font-weight':700,fill:'#fff','pointer-events':'none'},j+1))});
+ box.insertBefore(s,tip);
+}
+var ul=document.getElementById('events');
+EV.forEach(function(e,j){var li=document.createElement('li');li.innerHTML='<span class="dot"></span><span class="d"></span><span></span>';li.children[0].textContent=j+1;li.children[1].textContent=e[0];li.children[2].textContent=e[1];ul.appendChild(li)});
+
+/* branch */
+var t=document.getElementById('btable');
+var hd='<tr><th>지점</th><th>9월</th><th>10월</th><th>11월*</th></tr>';t.innerHTML=hd;
+B.forEach(function(r){var tr=document.createElement('tr');var td=document.createElement('td');td.textContent=r.b;tr.appendChild(td);
+ r.s.forEach(function(v,i){var c=document.createElement('td');c.className='num';c.textContent=f(v);
+  if(i===2){var bar=document.createElement('span');bar.className='bar'+(v>25000?' hi':'');bar.style.width=Math.round(v/40000*60)+'px';c.appendChild(bar)}
+  tr.appendChild(c)});t.appendChild(tr)});
+var tr2=document.createElement('tr');tr2.innerHTML='<td style="color:var(--mute);font-size:12.5px" colspan="4">신청 수 9월→10월: 서초 195→309, 잠실 203→431, 수원 138→206</td>';t.appendChild(tr2);
+
+/* budget */
+var bb=document.getElementById('budgetbox');
+[['메타 서초·잠실',5055246,15166668],['메타 수원',2371240,7583332],['네이버 브랜드검색(~11/11)',641667,1750000]].forEach(function(r){
+ var pct=r[1]/r[2]*100;var d=document.createElement('div');d.style.margin='12px 0';
+ d.innerHTML='<div style="display:flex;justify-content:space-between;font-size:13.5px"><span></span><span class="num"></span></div><div style="height:10px;background:var(--soft);border-radius:5px;margin-top:5px;overflow:hidden"><div style="height:100%;background:var(--acc);border-radius:5px"></div></div><div class="note" style="margin-top:3px"></div>';
+ d.querySelector('span').textContent=r[0];d.querySelector('.num').textContent=pct.toFixed(1)+'%';d.querySelector('div div div').style.width=pct+'%';
+ d.querySelector('.note').textContent=f(r[1])+'원 / '+f(r[2])+'원';bb.appendChild(d)});
+var bn=document.createElement('p');bn.className='note';bn.textContent='한 달의 절반(50%)이 지났는데 약 36%를 썼어요. 지점당 월 예산 1천만 원(VAT 별도), 제작비 3개 지점 합계 550만 원은 따로예요.';bb.appendChild(bn);
+
+/* content */
+var fu=document.getElementById('funnel');
+[['45','크리에이터 후보'],['25','선정'],['32','기획안'],['21','최종 영상 완료']].forEach(function(r){var d=document.createElement('div');d.className='fstep';d.innerHTML='<b></b><span></span>';d.children[0].textContent=r[0];d.children[1].textContent=r[1];fu.appendChild(d)});
+var K=[
+ ['크리에이터 선정 중',['GLP-1 파일럿: 요요','GLP-1 파일럿: 체형 변화','GLP-1 파일럿: 살처짐·근손실','GLP-1 파일럿: 전신 순환','GLP-1 파일럿: 근손실']],
+ ['예약·기획',['라인밸런스(패션)|예약 진행 중','강한 관리 오해 반박형|기획 확인']],
+ ['촬영',['추운날 관리','스파 말고 바디움']],
+ ['편집',['살집 콘텐츠']],
+ ['완료',['자기관리 페르소나형|9/16','예비신부 체크리스트형|9/15','옆구리 옷핏 고민형|9/15','관리 선택 정보형|9/16','관리사 POV형|9/16','멀티유즈(프로그램)|9/16','멀티유즈(상황)|9/11','전직 승무원 하체 고민형|10/12','관리 정체기 원인형|10/7','운동 병행 라인 관리형|10/6','중요 일정 옷핏 준비형|10/1','첫 바디관리 체험형|9/30','고민 부위 반전형|9/30','산후 체형 고민형|9/30','홈토크 3편|10/22~10/27','허리라인 운동형|11/4','얼굴윤곽 직장인형|10/29','토킹 콘텐츠|11/2','상담실장 편|11/4']]
+];
+var kb=document.getElementById('kb');
+K.forEach(function(c){var col=document.createElement('div');col.className='col';var h=document.createElement('h3');h.innerHTML='<b></b><span></span>';h.children[0].textContent=c[0];
+ var cnt=c[1].reduce(function(a,x){return a+(x.indexOf('홈토크 3편')===0?3:1)},0);h.children[1].textContent=cnt;col.appendChild(h);
+ c[1].forEach(function(x){var pr=x.split('|');var ch=document.createElement('div');ch.className='chip';ch.textContent=pr[0];if(pr[1]){var sm=document.createElement('small');sm.textContent=pr[1];ch.appendChild(sm)}col.appendChild(ch)});
+ kb.appendChild(col)});
+var kn=document.createElement('p');kn.className='note';kn.textContent='취소 1건(산후 체형, 개인 사정) 별도. 완료 날짜는 최종 영상 날짜예요.';document.getElementById('content').appendChild(kn);
+
+function draw(){monthly();daily()}
+draw();
+var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){css=getComputedStyle(document.documentElement);draw()},150)});
+if(window.matchMedia)window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){css=getComputedStyle(document.documentElement);draw()});
+})();
+</script>
+</body>
+</html>
