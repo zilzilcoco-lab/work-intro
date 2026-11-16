@@ -1,0 +1,524 @@
+/* 색: 지금 메인 책 『백지 앞에서』(문학동네 2026) 표지의 분위기 — 고운대표 결정(2026-10-16, 최신작으로 전환)
+   바탕은 흰색, 글자는 거의 검정 하나. 표지의 종이 흰빛·옅은 회색·분필 같은 하늘색은 번지는 빛과 표지 목업에만.
+   이전 메인: 『아주 희미한 빛으로도』 값은 docs/cover-colors.md. 참고 기법: docs/references.md */
+:root{
+  /* ── 메인 책 색 ──────────────────────────────────────────────
+     홈 첫 화면과 하위 페이지 머리의 빛은 "그때그때 메인이 되는 책"의 표지 색을 쓴다(고운대표 2026-10-16).
+     메인 책이 바뀌면 이 다섯 줄(+ 아래 첫 화면 글자 세 줄)만 그 책 표지에서 뽑은 색으로 바꾼다. 값은 "R G B".
+     현재: 『백지 앞에서』(문학동네 2026) — 종이 흰빛 / 하늘색 띠 / 옅은 회색
+     (『아주 희미한 빛으로도』였을 때: 35 37 47 · 111 132 166 · 236 185 160 · 235 197 201,
+      base linear-gradient(160deg,#4A5368 0%,#9AA6BC 40%,#E9D3CC 70%,#FAF7F6 100%), 글자 #fff·그림자 있음·판 1) */
+  --hero-1:206 213 222;
+  --hero-2:159 180 208;
+  --hero-3:243 243 243;
+  --hero-4:200 214 232;
+  --hero-base:linear-gradient(172deg,#F8F8F7 0%,#F2F3F3 38%,#D6E0EC 66%,#9FB4D0 100%);
+  /* 첫 화면 위 글자: 밝은 표지면 먹색·그림자 없음·어두운 판 0 / 어두운 표지면 #fff·그림자·판 1 */
+  --hero-text:#1F2430;
+  --hero-text-shadow:none;
+  --hero-shade:0;
+  /* ─────────────────────────────────────────────────────────── */
+  --bg:#FFFFFF;
+  --ink:#1F2430;--soft:#5D6675;--line:#ECE6E3;
+  --accent:#164C8B;
+  --c-dark:#23252F;--c-blue:#6F84A6;--c-apricot:#ECB9A0;--c-pink:#EBC5C9;--c-white:#FAF7F6;
+  --ease:cubic-bezier(.645,.045,.355,1);
+  --shadow:0 1px 1px hsl(230 15% 16% / .06),0 3px 6px hsl(230 15% 16% / .07),0 10px 20px hsl(230 15% 16% / .08),0 24px 40px -8px hsl(230 15% 16% / .14);
+}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Serif KR","Apple SD Gothic Neo",serif;font-weight:400;
+  font-size:clamp(1rem,.96rem + .2vw,1.0625rem);line-height:1.9;word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:.2em}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.wrap{max-width:760px;margin-inline:auto;padding-inline:20px}
+
+.draft{margin:0;background:#fff4e5;border-bottom:1px solid #f5d9a8;padding:8px 20px;font-family:sans-serif;font-size:.8rem;line-height:1.5;color:#7a4b00;text-align:center}
+
+/* 메뉴: 화면 위에 붙어 따라오는 반투명 띠 */
+.topnav-unused{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:14px clamp(16px,4vw,40px);background:rgba(255,255,255,.72);
+  -webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);
+  border-bottom:1px solid rgba(236,230,227,.7);font-size:.92rem}
+.topnav .brand{color:var(--ink);text-decoration:none;font-weight:600;letter-spacing:.25em}
+.topnav .links{display:flex;gap:clamp(14px,3vw,28px)}
+.topnav .links a{color:var(--soft);text-decoration:none;transition:color .15s}
+.topnav .links a:hover{color:var(--accent)}
+
+/* 첫 화면: 초점 나간 사진처럼 표지 색이 번지다 흰색으로 사라진다 */
+.hero{position:relative;overflow:hidden;min-height:min(78vh,640px);display:grid;place-items:center;text-align:center;color:#fff;
+  padding:96px 20px 160px;
+  background:
+    radial-gradient(60% 60% at 12% 8%,rgb(var(--hero-1) / .95) 0%,rgb(var(--hero-1) / 0) 70%),
+    radial-gradient(55% 55% at 82% 22%,rgb(var(--hero-2) / .85) 0%,rgb(var(--hero-2) / 0) 72%),
+    radial-gradient(50% 45% at 28% 78%,rgb(var(--hero-3) / .9) 0%,rgb(var(--hero-3) / 0) 70%),
+    radial-gradient(45% 40% at 74% 72%,rgb(var(--hero-4) / .85) 0%,rgb(var(--hero-4) / 0) 70%),
+    var(--hero-base)}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(180deg,rgba(255,255,255,0),var(--bg))}
+.hero-inner{position:relative;z-index:1}
+.hero .kicker{margin:0 0 .4em;letter-spacing:.5em;font-size:.85rem;opacity:.85}
+.hero h1{margin:0;font-weight:500;letter-spacing:.32em;text-indent:.32em;line-height:1.2;
+  font-size:clamp(2.4rem,1.6rem + 4vw,4.2rem);text-shadow:0 2px 24px rgba(35,37,47,.35)}
+.hero .line{margin:1.4em 0 0;font-weight:300;font-size:clamp(.95rem,.9rem + .3vw,1.1rem);opacity:.92;text-shadow:0 1px 14px rgba(35,37,47,.35)}
+
+/* 섹션 */
+section{padding-top:clamp(72px,11vw,120px)}
+h2{margin:0 0 28px;font-size:.85rem;font-weight:500;letter-spacing:.45em;color:var(--accent);display:flex;align-items:center;gap:14px}
+h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(236,185,160,.7),rgba(235,197,201,.6) 40%,rgba(111,132,166,.4) 75%,rgba(111,132,166,0))}
+
+/* 소개: 좁은 본문 칼럼 + 옆 여백 메모 */
+.about{display:grid;gap:24px}
+.about p{margin:0;max-width:34em;font-size:clamp(1.02rem,.98rem + .3vw,1.15rem)}
+.note{font-size:.88rem;color:var(--soft);line-height:1.8;border-left:1px solid var(--line);padding-left:16px}
+.note-label{display:block;font-size:.72rem;letter-spacing:.3em;color:var(--c-blue);margin-bottom:4px}
+@media(min-width:860px){.about{grid-template-columns:1fr 200px;gap:48px}}
+
+/* 작품: 연도순 가로 책장 */
+.hint{margin:-12px 0 8px;font-size:.8rem;color:var(--soft);letter-spacing:.05em}
+.shelf{list-style:none;margin:0;display:flex;gap:clamp(20px,4vw,40px);overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;padding:28px max(20px,calc((100vw - 760px)/2 + 20px)) 40px;
+  scroll-padding-inline:max(20px,calc((100vw - 760px)/2 + 20px));scrollbar-width:thin;scrollbar-color:var(--c-pink) transparent;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 20px,#000 calc(100% - 28px),transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 20px,#000 calc(100% - 28px),transparent)}
+.work{flex:0 0 clamp(150px,42vw,200px);scroll-snap-align:start}
+.work .year{display:block;font-size:clamp(1.6rem,1.3rem + 1.4vw,2.2rem);font-weight:300;letter-spacing:.02em;color:var(--c-dark);line-height:1;margin-bottom:16px;font-variant-numeric:lining-nums}
+.cover{aspect-ratio:2/3;border-radius:2px 5px 5px 2px;display:flex;align-items:flex-start;padding:14px 12px;
+  color:rgba(255,255,255,.92);font-size:.78rem;letter-spacing:.1em;
+  box-shadow:inset 7px 0 9px -7px rgba(35,37,47,.4),var(--shadow);
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.work:hover .cover,.work:focus-within .cover{transform:translateY(-6px) rotate(-.6deg)}
+.work h3{margin:18px 0 2px;font-size:1rem;font-weight:500}
+.work .kind{margin:0;font-size:.8rem;color:var(--soft)}
+.work .quote{margin:10px 0 0;font-size:.85rem;line-height:1.75;color:var(--ink);opacity:.8;border-top:1px solid var(--line);padding-top:10px}
+/* 표지 색 짝: 표지의 색을 다른 비율로 */
+.pair-1 .cover{background:
+  radial-gradient(80% 50% at 20% 15%,rgba(35,37,47,.92),rgba(35,37,47,0) 70%),
+  radial-gradient(70% 45% at 85% 35%,rgba(111,132,166,.85),rgba(111,132,166,0) 70%),
+  radial-gradient(60% 35% at 40% 82%,rgba(236,185,160,.9),rgba(236,185,160,0) 70%),
+  linear-gradient(180deg,#7C879C,#EBD9D3 70%,var(--c-white))}
+.pair-2 .cover{background:
+  radial-gradient(70% 45% at 78% 18%,rgba(35,37,47,.85),rgba(35,37,47,0) 70%),
+  radial-gradient(70% 45% at 20% 58%,rgba(235,197,201,.95),rgba(235,197,201,0) 70%),
+  linear-gradient(180deg,#8E9AB0,#F0DCD6 65%,var(--c-white))}
+.pair-3 .cover{background:
+  radial-gradient(90% 60% at 50% 0%,rgba(111,132,166,.95),rgba(111,132,166,0) 75%),
+  radial-gradient(70% 40% at 70% 75%,rgba(236,185,160,.85),rgba(236,185,160,0) 70%),
+  linear-gradient(180deg,#5B6B88,#DCC9C6 60%,var(--c-white))}
+.pair-4 .cover{background:
+  radial-gradient(80% 55% at 15% 90%,rgba(236,185,160,.95),rgba(236,185,160,0) 70%),
+  radial-gradient(70% 50% at 85% 10%,rgba(35,37,47,.7),rgba(35,37,47,0) 70%),
+  linear-gradient(180deg,#A9B2C4,#F3E2DC 60%,var(--c-white))}
+
+.biblio{margin-top:8px;font-size:.9rem;color:var(--soft)}
+.biblio summary{cursor:pointer;color:var(--accent);letter-spacing:.1em;list-style:none}
+.biblio summary::before{content:"+ "}
+.biblio[open] summary::before{content:"− "}
+
+/* 소식: 행사 · 인터뷰 · 리뷰 */
+.news{display:grid;gap:28px}
+.news h3{margin:0 0 6px;font-size:.78rem;font-weight:500;letter-spacing:.3em;color:var(--c-blue)}
+.news p{margin:0;font-size:.95rem}
+@media(min-width:640px){.news{grid-template-columns:repeat(3,1fr)}}
+
+footer{margin-top:clamp(80px,12vw,140px);padding:40px 20px 60px;text-align:center;color:var(--soft);font-size:.8rem;letter-spacing:.2em;
+  background:linear-gradient(180deg,var(--bg),#FBF4F1)}
+
+/* 스크롤하면 은은하게 나타나기 — 움직임을 꺼 둔 사용자는 그대로 보임 */
+@media (prefers-reduced-motion:no-preference){
+  .js .reveal{opacity:0;translate:0 14px;transition:opacity 1s var(--ease),translate 1s var(--ease)}
+  .js .reveal.in{opacity:1;translate:0 0}
+  .work{animation:rise .9s var(--ease) both;animation-delay:calc(var(--i,0) * 90ms)}
+  .work:nth-child(2){--i:1}.work:nth-child(3){--i:2}.work:nth-child(4){--i:3}.work:nth-child(5){--i:4}
+  @keyframes rise{from{opacity:0;translate:0 16px}}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cover{transition:none}}
+
+@media(max-width:520px){.topnav .brand{letter-spacing:.15em}.hero{min-height:70vh;padding-top:72px}}
+
+/* ── 여러 페이지 구성 (2026-10-16 고운대표: 한 페이지 대신 메뉴별 페이지) ── */
+.topnav .links a[aria-current="page"]{color:var(--ink);border-bottom:1px solid var(--accent);padding-bottom:2px}
+
+/* 하위 페이지 머리: 첫 화면의 빛을 얇게 이어받는다 */
+.pagehead{position:relative;padding:clamp(72px,12vw,128px) 0 clamp(32px,5vw,48px);
+  background:
+    radial-gradient(50% 120% at 8% 0%,rgb(var(--hero-2) / .28),rgb(var(--hero-2) / 0) 70%),
+    radial-gradient(45% 110% at 92% 10%,rgb(var(--hero-3) / .32),rgb(var(--hero-3) / 0) 70%),
+    radial-gradient(40% 90% at 60% 0%,rgb(var(--hero-4) / .28),rgb(var(--hero-4) / 0) 70%)}
+.pagehead .kicker{margin:0 0 .6em;font-size:.75rem;letter-spacing:.45em;color:var(--c-blue);text-transform:uppercase}
+.pagehead h1{margin:0;font-weight:500;letter-spacing:.2em;font-size:clamp(1.8rem,1.4rem + 2vw,2.8rem)}
+.pagehead + main section:first-child{padding-top:clamp(32px,5vw,56px)}
+section.flush{padding-top:clamp(16px,3vw,32px)}
+
+/* 홈: 최근 작품 */
+.feature-body{display:grid;grid-template-columns:clamp(130px,36vw,200px) 1fr;gap:clamp(20px,5vw,48px);align-items:end}
+.feature-body .work{flex:none}
+.feature-title{margin:.2em 0 .4em;font-size:clamp(1.3rem,1.1rem + 1vw,1.8rem);font-weight:500}
+.feature-body .quote{border:0;padding:0;margin:0 0 18px;font-size:.95rem}
+.lead{margin:0 0 14px;max-width:34em;font-size:clamp(1.02rem,.98rem + .3vw,1.15rem)}
+.more{display:inline-block;font-size:.85rem;letter-spacing:.08em;text-decoration:none;color:var(--accent);transition:transform .2s var(--ease)}
+.more:hover{transform:translateX(4px)}
+
+/* 소식 목록 */
+.newslist{list-style:none;margin:0 0 14px;padding:0}
+.newslist li{padding:12px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.newslist .date{display:inline-block;min-width:7.5em;color:var(--soft);font-size:.82rem;letter-spacing:.05em}
+
+/* 소개: 사진 자리 */
+.prose p{margin:0 0 1.2em;max-width:34em}
+.photo{aspect-ratio:4/3;max-width:560px;display:grid;place-items:center;color:var(--soft);font-size:.85rem;
+  background:linear-gradient(160deg,#EEF0F4,#F6ECE8 60%,#FBF8F7);border-radius:2px}
+
+/* 연락 */
+.contact .mail{font-size:clamp(1.05rem,1rem + .4vw,1.25rem)}
+
+/* 바닥 메뉴 */
+.footnav{display:flex;justify-content:center;gap:22px;margin-bottom:14px;letter-spacing:.1em}
+.footnav a{color:var(--soft);text-decoration:none}
+.footnav a:hover{color:var(--accent)}
+
+/* ── 머리: han-kang.net 참고(2026-10-16 고운대표) ──
+   왼쪽 큰 이름, 오른쪽에 세로로 쌓인 메뉴, 지금 페이지는 흐리게. 그 아래 본문은 메인 책 색이 옅게 깔린 판(panel). */
+.sitehead{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;
+  padding:clamp(24px,5vw,44px) clamp(20px,6vw,64px) clamp(20px,4vw,36px);background:var(--bg)}
+.sitehead .brand{color:var(--ink);text-decoration:none;font-weight:500;line-height:1.1;letter-spacing:.06em;
+  font-size:clamp(1.9rem,1.4rem + 2.4vw,3rem)}
+.sitehead .menu{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.sitehead .menu a{color:var(--ink);text-decoration:none;font-size:clamp(1.15rem,1rem + .8vw,1.6rem);line-height:1.45;letter-spacing:.06em;transition:color .2s}
+.sitehead .menu a:hover{color:var(--accent)}
+.sitehead .menu a[aria-current="page"]{color:#B9BEC7}
+/* 홈에서는 머리가 첫 화면 위에 얹힌다 */
+.page-index .sitehead{position:absolute;inset:auto 0 auto 0;z-index:5;background:transparent}
+.page-index .sitehead .brand,.page-index .sitehead .menu a{color:#fff;text-shadow:0 1px 14px rgba(35,37,47,.35)}
+.page-index .hero{padding-top:clamp(200px,32vw,260px)}
+.page-index .hero h1{display:none}
+.page-index .draft{position:relative;z-index:6}
+
+/* 본문 판: 메인 책 색이 옅게 번진 면, 화면 끝까지 */
+.panel{min-height:70vh;padding-bottom:clamp(64px,10vw,120px);
+  background:
+    radial-gradient(70% 50% at 0% 0%,rgb(var(--hero-2) / .16),rgb(var(--hero-2) / 0) 70%),
+    radial-gradient(60% 45% at 100% 10%,rgb(var(--hero-3) / .22),rgb(var(--hero-3) / 0) 70%),
+    radial-gradient(70% 50% at 60% 100%,rgb(var(--hero-4) / .2),rgb(var(--hero-4) / 0) 70%),
+    #FCFAF9}
+.panel > section:first-child{padding-top:clamp(40px,7vw,72px)}
+.panel + footer{margin-top:0;background:#FCFAF9}
+
+/* 연락: 오른쪽 정렬 */
+.page-contact .contact{text-align:right}
+.page-contact .contact .lead{margin-left:auto}
+
+/* 작품 분류 거르기 */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.filters button{font:inherit;font-size:.85rem;letter-spacing:.08em;padding:6px 14px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--line);background:rgba(255,255,255,.7);color:var(--soft);transition:all .2s var(--ease)}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.shelf .work[hidden]{display:none}
+
+/* 연락: 용도별 창구 */
+.channels{margin:0}
+.channels dt{font-size:.78rem;letter-spacing:.25em;color:var(--c-blue);margin-top:28px}
+.channels dt:first-child{margin-top:0}
+.channels dd{margin:6px 0 0;font-size:clamp(1rem,.96rem + .3vw,1.15rem)}
+
+/* 첫 화면 글자 대비: 글자 뒤에 메인 책 먹색을 옅게 번지게 깐다(디자인 터미널 확인 의견) */
+.hero-inner::before{content:"";position:absolute;z-index:-1;inset:-60px -90px;border-radius:50%;
+  background:radial-gradient(closest-side,rgb(var(--hero-1) / .38),rgb(var(--hero-1) / 0));filter:blur(8px)}
+.hero .kicker{opacity:1;font-weight:500}
+.hero .line{opacity:1}
+
+/* ── sonbomi.com 기준(작가님이 처음 보여 준 사이트, 2026-10-16) ──
+   홈은 정보량을 줄여 가운데 정렬, 작품은 한 권씩 세로로, 책마다 상세 페이지, 넓은 여백·본문 폭 약 680px. */
+.wrap{max-width:720px}
+.center{text-align:center}
+.home section{padding-top:clamp(56px,9vw,96px)}
+.intro{margin:0 auto;max-width:28em;font-size:clamp(1.05rem,1rem + .4vw,1.25rem);line-height:2}
+.label{margin:0 0 20px;font-size:.75rem;letter-spacing:.45em;color:var(--accent)}
+.newbook{display:inline-flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink);text-decoration:none}
+.newbook .work{flex:none;width:clamp(150px,40vw,190px);margin-bottom:14px}
+.newbook-title{font-size:clamp(1.15rem,1rem + .6vw,1.4rem);font-weight:500;font-style:italic}
+.newbook-meta{font-size:.82rem;color:var(--soft)}
+.newbook:hover .cover{transform:translateY(-6px) rotate(-.6deg)}
+.picks{list-style:none;margin:0 0 20px;padding:0}
+.picks li{padding:6px 0}
+.picks a{color:var(--ink);text-decoration:none;font-size:clamp(1.05rem,1rem + .3vw,1.2rem);font-style:italic;border-bottom:1px solid transparent;transition:border-color .2s}
+.picks a:hover{border-color:var(--accent)}
+
+/* 작품 목록: 한 권씩 */
+.entries{list-style:none;margin:0;padding:0}
+.entry{display:grid;grid-template-columns:clamp(110px,30vw,180px) 1fr;gap:clamp(20px,5vw,44px);align-items:start;
+  padding:clamp(28px,5vw,44px) 0;border-bottom:1px solid var(--line)}
+.entry:last-child{border-bottom:0}
+.entry[hidden]{display:none}
+.entry .work,.book .work{display:block;flex:none}
+.entry h3{margin:0 0 6px;font-size:clamp(1.15rem,1rem + .7vw,1.5rem);font-weight:500;font-style:italic}
+.entry h3 a{color:var(--ink);text-decoration:none}
+.entry h3 a:hover{color:var(--accent)}
+.entry-meta{margin:0 0 12px;font-size:.85rem;color:var(--soft)}
+.entry-line{margin:0 0 6px}
+.entry-trans{margin:0;font-size:.82rem;color:var(--soft)}
+.entry:hover .cover{transform:translateY(-6px) rotate(-.6deg)}
+
+/* 작품 상세 */
+.back{margin-bottom:28px}
+.book{display:grid;gap:clamp(24px,5vw,48px)}
+.book .work{width:clamp(170px,48vw,240px)}
+.book-title{margin:0 0 6px;font-size:clamp(1.6rem,1.3rem + 1.6vw,2.4rem);font-weight:500;font-style:italic}
+.book .quote{border:0;padding:0;margin:20px 0;font-size:1.02rem;color:var(--ink);opacity:.85}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:10px 20px;margin:24px 0;font-size:.92rem}
+.facts dt{color:var(--c-blue);letter-spacing:.2em;font-size:.78rem;padding-top:3px}
+.facts dd{margin:0}
+.buy{font-size:.9rem}
+@media(min-width:760px){.book{grid-template-columns:240px 1fr}}
+.entry a.work,.book a.work{text-decoration:none}
+
+/* 대비 보강(디자인 터미널 점검, 4.5:1 이상) */
+.sitehead .menu a[aria-current="page"]{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:1px;text-underline-offset:.3em}
+.hero .kicker{font-size:clamp(.95rem,.9rem + .3vw,1.05rem);letter-spacing:.45em}
+.hero .line{font-size:clamp(1.05rem,1rem + .4vw,1.2rem);font-weight:400}
+.hero .kicker,.hero .line{text-shadow:0 1px 2px rgb(var(--hero-1) / .55),0 0 18px rgb(var(--hero-1) / .5)}
+.hero-inner::before{background:radial-gradient(closest-side,rgb(var(--hero-1) / .5),rgb(var(--hero-1) / 0))}
+.page-index .sitehead::before{content:"";position:absolute;inset:0 0 -40px 0;z-index:-1;
+  background:linear-gradient(180deg,rgb(var(--hero-1) / .35),rgb(var(--hero-1) / 0))}
+.page-index .sitehead .brand,.page-index .sitehead .menu a{text-shadow:0 1px 2px rgb(var(--hero-1) / .6),0 0 16px rgb(var(--hero-1) / .45)}
+.page-index .sitehead .menu a[aria-current="page"]{color:#fff}
+
+/* 대비 2차(디자인 터미널 재점검: 작은 흰 글자 4.5:1 이상) */
+.hero-inner::before{inset:-90px -140px;background:radial-gradient(closest-side,rgb(var(--hero-1) / .72) 0%,rgb(var(--hero-1) / .55) 45%,rgb(var(--hero-1) / 0) 100%);filter:blur(14px)}
+.page-index .sitehead::before{inset:0 0 -110px 0;background:linear-gradient(180deg,rgb(var(--hero-1) / .5),rgb(var(--hero-1) / .3) 60%,rgb(var(--hero-1) / 0))}
+.hero-inner::before{background:radial-gradient(closest-side,rgb(var(--hero-1) / .82) 0%,rgb(var(--hero-1) / .7) 50%,rgb(var(--hero-1) / 0) 100%)}
+.page-index .sitehead::before{background:
+  radial-gradient(60% 120% at 100% 0%,rgb(var(--hero-1) / .55),rgb(var(--hero-1) / 0) 80%),
+  linear-gradient(180deg,rgb(var(--hero-1) / .5),rgb(var(--hero-1) / .3) 60%,rgb(var(--hero-1) / 0))}
+
+/* 첫 화면은 빛만 — 문장은 아래 흰 바탕에 어두운 글자로(대비 확보, 번짐 유지) */
+.hero-inner::before{content:none}
+.page-index .hero{min-height:min(52vh,460px);padding:0}
+.kicker-dark{margin:0 0 18px;font-size:.85rem;letter-spacing:.5em;color:var(--accent)}
+.hero-line{margin:0 auto 28px;max-width:26em;font-size:clamp(1.25rem,1.1rem + .9vw,1.7rem);line-height:1.7;color:var(--ink)}
+.page-index main.home > section:first-child{padding-top:clamp(8px,2vw,24px)}
+
+/* 홈: 대표작 자리에 연도순 책 목업 가로 줄(고운대표 2026-10-16) — 대표작은 작은 표시로 */
+.home-shelf .shelf{padding-top:12px;padding-bottom:28px}
+.home-shelf .work{flex:0 0 clamp(112px,30vw,150px)}
+.home-shelf .work a{display:block;color:var(--ink);text-decoration:none}
+.home-shelf .work .year{font-size:clamp(1.1rem,1rem + .6vw,1.4rem);margin-bottom:10px}
+.home-shelf .cover{font-size:.7rem;padding:10px 9px}
+.home-shelf .t{display:block;margin-top:12px;font-size:.88rem;font-style:italic;line-height:1.5}
+.home-shelf .pick{display:inline-block;margin-top:6px;font-size:.7rem;letter-spacing:.2em;color:var(--accent);border:1px solid rgba(22,76,139,.35);border-radius:999px;padding:1px 8px}
+.home-shelf .work:hover .cover{transform:translateY(-6px) rotate(-.6deg)}
+
+/* 작품 상세: 여러 나라 판본(작가님 요청 2026-10-16) — 한눈에 보이고, 누르면 설명 */
+.editions{margin-top:clamp(48px,8vw,80px)}
+.editions h2{text-transform:none}
+.ed-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(92px,26vw,128px),1fr));gap:clamp(16px,3vw,28px)}
+.ed{display:block;width:100%;padding:0;border:0;background:none;font:inherit;color:var(--ink);text-align:left;cursor:pointer;flex:none}
+.ed .cover{font-size:.68rem;padding:9px 8px}
+.ed-lang{display:block;margin-top:10px;font-size:.85rem}
+.ed-year{display:block;font-size:.75rem;color:var(--soft)}
+.ed:hover .cover,.ed[aria-expanded="true"] .cover{transform:translateY(-6px) rotate(-.6deg)}
+.ed[aria-expanded="true"] .ed-lang{color:var(--accent);text-decoration:underline;text-underline-offset:.3em}
+.ed-panel{margin-top:24px;padding:20px 22px;border-left:2px solid var(--accent);background:rgba(255,255,255,.7)}
+.ed-panel .ed-title{margin:0 0 4px;font-size:1.15rem;font-weight:500;font-style:italic}
+.ed-panel p{margin:6px 0}
+
+/* ── 책마다 자기 표지 색(고운대표 2026-10-16: "책이 전부 한 권 디자인만 적용됨") ──
+   목업은 그 책 표지에서 뽑은 4색(--c1 진한색, --c2 중간색, --c3·--c4 밝은 포인트)과 바탕(--cbase)으로 칠한다.
+   책 요소에 class="book-<영문이름>"을 달면 아래 팔레트가 적용된다. 색은 디자인 터미널이 표지에서 뽑아 준 값만 쓴다.
+   값이 없는 책은 메인 책 색(--hero-*)으로 칠한다. */
+.cover{
+  --c1:var(--hero-1);--c2:var(--hero-2);--c3:var(--hero-3);--c4:var(--hero-4);
+  --cbase:linear-gradient(180deg,#7C879C,#EBD9D3 70%,#FAF7F6)}
+[class*="book-"] .cover,.cover[class*="book-"]{background:
+  radial-gradient(80% 50% at 20% 15%,rgb(var(--c1) / .92),rgb(var(--c1) / 0) 70%),
+  radial-gradient(70% 45% at 85% 35%,rgb(var(--c2) / .85),rgb(var(--c2) / 0) 70%),
+  radial-gradient(60% 35% at 40% 82%,rgb(var(--c3) / .9),rgb(var(--c3) / 0) 70%),
+  radial-gradient(50% 30% at 75% 70%,rgb(var(--c4) / .8),rgb(var(--c4) / 0) 70%),
+  var(--cbase)}
+/* 책별 팔레트 — 값 받는 대로 채움. 예:
+.book-faint-light .cover{--c1:35 37 47;--c2:111 132 166;--c3:236 185 160;--c4:235 197 201;--cbase:linear-gradient(180deg,#4A5368,#E9D3CC 70%,#FAF7F6)}
+*/
+
+/* 책별 표지 색 — docs/cover-colors.md(디자인 터미널 측정, main 4aecb9f). 글자색으로는 쓰지 않음(파스텔은 대비 부족). */
+[class*="book-"] .cover,.cover[class*="book-"]{background:radial-gradient(80% 50% at 20% 15%,rgb(var(--c1) / var(--a1,.92)),rgb(var(--c1) / 0) 70%),radial-gradient(70% 45% at 85% 35%,rgb(var(--c2) / .85),rgb(var(--c2) / 0) 70%),radial-gradient(60% 35% at 40% 82%,rgb(var(--c3) / .9),rgb(var(--c3) / 0) 70%),radial-gradient(50% 30% at 75% 70%,rgb(var(--c4) / .8),rgb(var(--c4) / 0) 70%),var(--cbase)}
+.book-shoko .cover{--c1:25 16 16;--c2:226 197 213;--c3:251 231 245;--c4:252 244 250;--a1:0.45;--cbase:linear-gradient(180deg,#FDFDFD 0%,#FCF4FA 55%,#F5D8E4 100%)}
+.book-harmless .cover{--c1:110 82 50;--c2:244 218 98;--c3:245 216 77;--c4:185 226 245;--a1:0.35;--cbase:linear-gradient(180deg,#F5D850 0%,#E9E5DF 55%,#B9E3F6 100%)}
+.book-bright-night .cover{--c1:9 123 134;--c2:129 185 223;--c3:251 232 198;--c4:249 215 204;--a1:0.7;--cbase:linear-gradient(180deg,#D7C4D1 0%,#FAD5CD 55%,#FDECCB 100%)}
+.book-effortless .cover{--c1:65 71 65;--c2:107 157 189;--c3:190 225 240;--c4:215 209 161;--a1:0.75;--cbase:linear-gradient(180deg,#B0C7B2 0%,#94BDDD 55%,#6F88B4 100%)}
+.book-faint-light .cover{--c1:34 72 96;--c2:66 93 124;--c3:248 232 224;--c4:200 181 177;--a1:0.9;--cbase:linear-gradient(180deg,#2C5770 0%,#D9C3BB 55%,#FCE4DA 100%)}
+.book-blank-page .cover{--c1:177 177 177;--c2:183 200 221;--c3:243 243 243;--c4:210 218 227;--a1:0.35;--cbase:linear-gradient(180deg,#F3F3F3 0%,#F3F3F3 55%,#B8C8DE 100%)}
+.book-shoko .cover,.book-harmless .cover,.book-bright-night .cover,.book-blank-page .cover{color:rgba(31,36,48,.75)}
+.book-blank-page .cover{box-shadow:inset 0 0 0 1px rgba(31,36,48,.12),inset 7px 0 9px -7px rgba(35,37,47,.25),var(--shadow)}
+
+/* 소개: 프로필 */
+.profile{max-width:34em;margin:0;font-size:clamp(.98rem,.95rem + .2vw,1.05rem);gap:14px 28px}
+.profile dt{padding-top:4px}
+
+/* 언어 바꾸기(한국어 · EN) — 머리 맨 위 오른쪽 작은 줄 */
+.sitehead{flex-wrap:wrap;row-gap:10px}
+.lang{order:-1;flex-basis:100%;display:flex;justify-content:flex-end;gap:8px;font-size:.8rem;letter-spacing:.08em;color:var(--soft)}
+.lang a{color:var(--soft);text-decoration:none}
+.lang a:hover{color:var(--accent)}
+.lang a[aria-current]{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:.3em}
+.page-index .lang,.page-index .lang a{color:#fff;text-shadow:0 1px 2px rgb(var(--hero-1) / .6)}
+.page-index .lang a[aria-current]{text-decoration-color:#fff}
+/* 머리 배치를 격자로: 언어 줄(위 전체) / 이름(왼쪽) / 메뉴(오른쪽) — 영어 이름이 길어도 메뉴가 밀리지 않게 */
+.sitehead{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;column-gap:20px}
+.sitehead .lang{grid-column:1 / -1}
+html[lang="en"] .sitehead .brand{font-size:clamp(1.6rem,1.1rem + 2.2vw,2.8rem);letter-spacing:.02em;line-height:1.15}
+html[lang="en"] .kicker-dark,html[lang="en"] .label,html[lang="en"] h2{letter-spacing:.25em}
+
+/* 소개: 수상 목록 */
+.awards{list-style:none;margin:4px 0 0;padding:0;color:var(--ink)}
+.awards li{padding:3px 0;line-height:1.6}
+.awards .y{display:inline-block;min-width:3.2em;color:var(--soft);font-variant-numeric:tabular-nums}
+.awards-note{margin:8px 0 0;font-size:.8rem;color:var(--soft)}
+.ph{color:var(--soft);font-size:.85em}
+.ed-more{cursor:default}
+.ed-more .cover{background:repeating-linear-gradient(135deg,#F6F3F2 0 10px,#FBF9F8 10px 20px)!important;color:var(--soft);justify-content:center;align-items:center;font-size:1.6rem;box-shadow:inset 0 0 0 1px var(--line)}
+/* 소개: 작가 사진 */
+.photo-fig{margin:0;display:inline-block}
+.photo-fig img{display:block;width:clamp(180px,48vw,240px);height:auto;border-radius:3px;box-shadow:var(--shadow)}
+.photo-fig figcaption{margin-top:10px;font-size:.78rem;color:var(--soft)}
+
+/* 디자인 터미널 PR #9 점검: 목업 위 [작품명] 라벨은 아래쪽에, 옅은 흰 받침 위 먹색 글자로(모든 책 4.5:1 이상) */
+[class*="book-"] .cover{align-items:flex-end}
+[class*="book-"] .cover > span{background:rgba(255,255,255,.82);color:#1F2430;padding:3px 7px;border-radius:2px;line-height:1.45;letter-spacing:.04em}
+/* 흰 표지(백지 앞에서): 윤곽 더 또렷하게 */
+.book-blank-page .cover{box-shadow:inset 0 0 0 1px rgba(31,36,48,.25),inset 7px 0 9px -7px rgba(35,37,47,.3),0 2px 4px rgba(31,36,48,.08),var(--shadow)}
+/* 판본 칸 라벨이 좁은 칸을 넘지 않게(영어 긴 라벨) */
+.ed-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,clamp(92px,26vw,128px)),1fr))}
+.ed-lang,.ed-year{overflow-wrap:anywhere;white-space:normal}
+.ed .cover > span{overflow-wrap:anywhere}
+
+/* 소식: 공유 구글 캘린더 */
+.cal iframe{display:block;width:100%;height:clamp(360px,60vh,520px);border:1px solid var(--line);border-radius:3px;background:#fff}
+.cal-empty{margin:0;padding:28px 20px;border:1px dashed var(--line);border-radius:3px;color:var(--soft);text-align:center;font-size:.92rem}
+.cal-sub{margin:10px 0 0;font-size:.85rem}
+
+/* 『백지 앞에서』 실제 표지(고운대표 지시 2026-10-16, 서점 이미지에서 잘라 씀 — 출판사 사용 허락 확인 필요).
+   번역판 칸(.ed)에는 쓰지 않고 한국어판(.ko-ed)에만. */
+.book-blank-page:not(.ed) .cover,.book-blank-page.ko-ed .cover{background:#F3F3F3 url(images/cover-blank-page-600.jpg) center/cover no-repeat}
+.book-blank-page:not(.ed) .cover > span,.book-blank-page.ko-ed .cover > span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* 『쇼코의 미소』 실제 표지(고운대표 지시, 서점 이미지에서 잘라 씀 — 출판사 사용 허락 확인 필요) */
+.book-shoko:not(.ed) .cover,.book-shoko.ko-ed .cover{background:#E9C9DD url(images/cover-shoko.jpg) center/cover no-repeat}
+.book-shoko:not(.ed) .cover > span,.book-shoko.ko-ed .cover > span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* 실제 표지 4권(교보 이미지, 개인비서 수집 070700b — 출판사 사용 허락 확인 필요). 번역판 칸(.ed)엔 쓰지 않음 */
+.book-harmless:not(.ed) .cover{background:#F5D850 url(images/cover-harmless.jpg) center/cover no-repeat}
+.book-bright-night:not(.ed) .cover{background:#F9D7CC url(images/cover-bright-night.jpg) center/cover no-repeat}
+.book-effortless:not(.ed) .cover{background:#94BDDD url(images/cover-effortless.jpg) center/cover no-repeat}
+.book-faint-light:not(.ed) .cover{background:#D9C3BB url(images/cover-faint-light.jpg) center/cover no-repeat}
+.book-harmless:not(.ed) .cover > span,.book-bright-night:not(.ed) .cover > span,.book-effortless:not(.ed) .cover > span,.book-faint-light:not(.ed) .cover > span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* 실제 표지 칸은 표지 원본 비율에 맞춰 잘림 없이(디자인 터미널 제안 ①) */
+.book-shoko:not(.ed) .cover,.book-shoko.ko-ed .cover{aspect-ratio:400/601}
+.book-harmless:not(.ed) .cover{aspect-ratio:400/579}
+.book-bright-night:not(.ed) .cover{aspect-ratio:400/579}
+.book-effortless:not(.ed) .cover{aspect-ratio:400/572}
+.book-faint-light:not(.ed) .cover{aspect-ratio:400/601}
+.book-blank-page:not(.ed) .cover,.book-blank-page.ko-ed .cover{aspect-ratio:498/750}
+/* 책 펼치며 들어가기(book-open.js). transform·opacity만 움직임 */
+.bo-layer{position:fixed;inset:0;z-index:100;pointer-events:none;perspective:1800px}
+.bo-book{position:absolute;transform-origin:0 50%;transform-style:preserve-3d;will-change:transform}
+.bo-block,.bo-sheet,.bo-cover{position:absolute;inset:0;border-radius:2px 5px 5px 2px;transform-origin:0 50%;transform-style:preserve-3d}
+.bo-block{inset:1.5% 1% 1.5% 0;background:#FBF9F6;box-shadow:inset 6px 0 10px -6px rgba(35,37,47,.25),0 18px 40px -12px rgba(31,36,48,.35)}
+.bo-sheet{inset:1.5% 1.5% 1.5% 0;background:linear-gradient(90deg,#EFEBE6,#FDFCFA 12%,#FFFFFF);
+  box-shadow:inset 0 0 0 1px rgba(31,36,48,.05);backface-visibility:visible;will-change:transform}
+.bo-cover{will-change:transform}
+.bo-out,.bo-in{position:absolute;inset:0;border-radius:inherit;backface-visibility:hidden}
+.bo-out{box-shadow:inset 7px 0 9px -7px rgba(35,37,47,.4)}
+.bo-in{transform:rotateY(180deg);background:#F6F2EE;box-shadow:inset -6px 0 10px -6px rgba(35,37,47,.2)}
+.bo-dim,.bo-veil{position:absolute;inset:0;background:#fff;opacity:0}
+/* 상세 페이지에 도착하면 흰 종이빛에서 서서히 */
+@keyframes bo-arrive{from{opacity:0}to{opacity:1}}
+.arrive body{animation:bo-arrive .6s ease-out both}
+@media (prefers-reduced-motion:reduce){.arrive body{animation:none}}
+/* 첫 화면 위 글자색은 메인 책 표지의 밝기를 따름(맨 위 --hero-text 세 줄) */
+.page-index .sitehead .brand,.page-index .sitehead .menu a,.page-index .sitehead .menu a[aria-current="page"],
+.page-index .lang,.page-index .lang a{color:var(--hero-text);text-shadow:var(--hero-text-shadow)}
+.page-index .sitehead::before{opacity:var(--hero-shade)}
+/* 표지 안 숨김 글자(스크린리더용)가 표지 밖으로 새지 않게 — 움직임 줄이기 켠 휴대폰 가로 스크롤 버그 */
+.cover{position:relative}
+/* 자랑은 조용히: 수상은 소개 맨 아래 접힌 칸으로(고운대표 2026-10-16) */
+.about{grid-template-columns:1fr!important}
+.quiet{margin-top:8px;border-top:1px solid var(--line);padding-top:14px;font-size:.88rem;color:var(--soft)}
+.quiet summary{cursor:pointer;width:max-content;font-size:.8rem;letter-spacing:.3em;color:var(--soft);list-style:none}
+.quiet summary::-webkit-details-marker{display:none}
+.quiet summary::after{content:" +";letter-spacing:0}
+.quiet[open] summary::after{content:" −"}
+.quiet .awards{margin-top:10px;color:var(--soft)}
+/* 첫 화면: 안개 속에서 새 책이 떠오르는 구도(디자인 터미널 제안, 고운대표 시안 요청 2026-10-16) */
+.page-index .hero{min-height:clamp(300px,44vh,420px)}
+.page-index .hero::after{height:60%}
+.page-index main.home > section.rise{position:relative;z-index:2;margin-top:clamp(-210px,-24vh,-150px);padding-top:0}
+.rise .newbook .work{width:clamp(170px,46vw,220px)}
+.rise .newbook .cover{box-shadow:inset 0 0 0 1px rgba(31,36,48,.18),0 2px 4px rgba(31,36,48,.08),0 22px 48px -14px rgba(31,48,80,.35)}
+.newbook-kicker{font-size:.78rem;letter-spacing:.5em;text-indent:.5em;color:var(--accent);margin-top:4px}
+@media (prefers-reduced-motion:no-preference){
+  .rise .newbook .work{animation:rise-up 1.6s cubic-bezier(.2,.7,.2,1) both .15s}
+  @keyframes rise-up{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
+}
+.quiet summary{padding:10px 0}
+/* PC에서 문장 줄까지 첫 화면에 들어오게, 흰 표지 윤곽 또렷하게(디자인 터미널 PR #21 제안) */
+.rise .newbook .cover{box-shadow:inset 0 0 0 1px rgba(31,36,48,.28),0 2px 6px rgba(31,36,48,.14),0 24px 50px -14px rgba(31,48,80,.45)}
+@media (min-width:900px){
+  .page-index .hero{min-height:clamp(260px,34vh,340px)}
+  .page-index main.home > section.rise{margin-top:clamp(-190px,-20vh,-140px)}
+  .rise .newbook .work{width:clamp(160px,15vw,190px)}
+}
+/* 소개: 매거진처럼 — 큰 사진 + 이름, 옆(휴대폰은 아래)에 소개 글(고운대표 2026-10-16, 김영하 소개 페이지 참고) */
+.about-page > .spread{padding:0}
+.spread{display:grid;gap:clamp(28px,5vw,64px);max-width:1180px;margin:0 auto;padding-bottom:24px}
+.spread-photo{position:relative;margin:0;overflow:hidden;background:#DDE3E8;aspect-ratio:4/5;max-height:88vh}
+.spread-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 30%}
+.spread-photo::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(180deg,rgba(20,24,32,0),rgba(20,24,32,.62))}
+.spread-name{position:absolute;z-index:1;left:clamp(20px,4vw,40px);bottom:clamp(22px,4vw,40px);color:#fff;display:flex;flex-direction:column;gap:6px}
+.spread-kicker{font-size:.72rem;letter-spacing:.32em;opacity:.9;font-family:sans-serif}
+.spread-title{font-size:clamp(2.6rem,2rem + 3vw,4.2rem);font-weight:500;line-height:1;letter-spacing:.04em}
+.spread-credit{position:absolute;z-index:1;right:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,24px);font-size:.68rem;color:rgba(255,255,255,.85);max-width:55%;text-align:right;line-height:1.4}
+.spread-text{padding:0 20px;max-width:36em;margin:0 auto}
+.spread-text p{margin:0 0 1.5em;line-height:2}
+.spread-lead{font-size:clamp(1.08rem,1rem + .4vw,1.25rem);color:var(--ink)}
+.spread-text .quiet{margin-top:2.4em}
+@media (min-width:900px){
+  .spread{grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:start;padding:clamp(32px,4vw,56px) clamp(20px,4vw,48px) 0}
+  .spread-photo{position:sticky;top:24px;border-radius:2px}
+  .spread-text{padding:clamp(8px,4vh,48px) 0 0;margin:0}
+}
+/* 낮은 노트북(높이 760 이하)에서도 문장 한 줄까지 첫 화면에(디자인 터미널 PR #22 참고) */
+@media (min-width:900px) and (max-height:780px){
+  .page-index .hero{min-height:min(30vh,260px)}
+  .page-index main.home > section.rise{margin-top:max(-17vh,-140px)}
+  .rise .newbook .work{width:min(150px,20vh)}
+}
+.spread-credit{bottom:auto;top:clamp(12px,3vw,20px);text-shadow:0 1px 4px rgba(0,0,0,.45)}
+@media (min-width:900px){.spread-photo{aspect-ratio:auto;height:min(84vh,780px)}}
+/* 소개 사진 위 글자 대비(디자인 터미널 PR #23 점검): 아래쪽 스크림 진하게, 작은 영문 키우고 그림자, 촬영자 표기는 사진 밖 먹색 캡션 */
+.spread-photo::after{height:60%;background:linear-gradient(to top,rgba(12,16,22,.72) 0%,rgba(12,16,22,.45) 35%,rgba(12,16,22,0) 100%)}
+.spread-name{text-shadow:0 1px 3px rgba(0,0,0,.55),0 0 18px rgba(0,0,0,.35)}
+.spread-kicker{font-size:.8rem;font-weight:600;opacity:1}
+.spread-credit{position:static;margin:10px 20px 0;padding:0;max-width:none;text-align:left;font-size:.78rem;color:var(--soft);text-shadow:none}
+@media (min-width:900px){
+  .spread-photo{position:relative;top:auto;height:max(440px,calc(100vh - 320px));max-height:780px}
+  .spread-media{position:sticky;top:24px}
+  .spread-credit{margin:10px 0 0}
+}
+.spread-photo::after{height:62%;background:linear-gradient(to top,rgba(12,16,22,.82) 0%,rgba(12,16,22,.66) 28%,rgba(12,16,22,.3) 60%,rgba(12,16,22,0) 100%)}
+/* 영어판: 이름이 두 번(CHOI EUNYOUNG + Choi Eunyoung) 나오지 않게, 한 줄로 */
+html[lang="en"] .spread-kicker{display:none}
+html[lang="en"] .spread-title{font-size:clamp(2.2rem,1.6rem + 2.2vw,3.3rem);white-space:nowrap}
+/* 『밝은 밤』 상세: 한국어판 칸에도 실제 표지, 작가의 말 인용(책날개) */
+.book-bright-night.ko-ed .cover{background:#F9D7CC url(images/cover-bright-night.jpg) center/cover no-repeat;aspect-ratio:400/579}
+.book-bright-night.ko-ed .cover > span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.author-note{margin:22px 0 26px;padding:4px 0 4px 18px;border-left:2px solid rgb(var(--hero-2) / .8);max-width:34em}
+.author-note p{margin:0;font-size:1rem;line-height:2;color:var(--ink)}
+.author-note footer{margin:10px 0 0;font-size:.82rem;color:var(--soft);background:none;padding:0}
+.author-note footer{text-align:left;letter-spacing:0;border:0;margin-top:10px}
+/* 책 상세: 출판사 한 줄 소개 + 책 속 문장(문학동네 "펴낸 책" 페이지) */
+.book-tagline{margin:14px 0 0;font-size:1.02rem;color:var(--ink);font-weight:500}
+.book-excerpt{margin:20px 0 22px;padding:0;max-width:34em}
+.book-excerpt p{margin:0;font-size:1rem;line-height:2;color:var(--ink);opacity:.88}
+.book-excerpt footer{margin:8px 0 0;padding:0;background:none;border:0;text-align:left;letter-spacing:0;font-size:.82rem;color:var(--soft)}
+.book-harmless.ko-ed .cover{background:#F5D850 url(images/cover-harmless.jpg) center/cover no-repeat;aspect-ratio:400/579}
+.book-harmless.ko-ed .cover > span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* 🐈 응접실 문(작가님 전용 — 흐리게, 2026-10-21 고운대표) */
+.footnav .catdoor{opacity:.28;display:inline-flex;align-items:center;vertical-align:middle;transition:opacity .2s}.footnav .catdoor:hover,.footnav .catdoor:focus{opacity:.65}.footnav .catdoor img{image-rendering:pixelated;width:16px;height:14px}
