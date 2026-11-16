@@ -310,6 +310,11 @@ a.tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(14,21,38,.14
 .trio .dd i{flex:1;text-align:center;font-style:normal;border-radius:1cqh;padding:1cqh 0;background:#eef1f8;color:#7a8499}
 .trio .dd i.y{background:#2d7f6a;color:#fff}
 @media (prefers-reduced-motion:reduce){.trio .ln{animation:none;stroke-dashoffset:0}}
+
+.bsteps{max-width:900px}
+.bsteps button small{font-weight:400;color:#8fa0cc;font-size:12px;max-width:150px;text-align:center;line-height:1.4;margin-top:-2px}
+.bcap{text-align:center;max-width:620px;line-height:1.5}
+@media (max-width:760px){.bsteps button small{display:none}}
 footer{padding-block:40px 56px;color:var(--mute);font-size:13px}
 @media (max-width:700px){.flow .col::after{display:none}.scene{height:clamp(220px,62vw,300px)}}
 @media (prefers-reduced-motion:reduce){.ring{transition:none}.bg{transition:none}a.tile:hover{transform:none}}
@@ -449,18 +454,11 @@ footer{padding-block:40px 56px;color:var(--mute);font-size:13px}
   <section class="block" id="flowsec">
     <h2>콘텐츠는 이렇게 만듭니다</h2>
     <p class="sub">사람이 판단할 곳과 AI가 빠르게 해 주는 곳을 나눴습니다.</p>
-    <div class="fgrid">
-      <div class="fcard" style="--k:1" data-no="1"><b>주제 찾기</b><span>반응 좋은 소재와 이슈를 매일 모읍니다. 고르는 것은 사람입니다.</span></div>
-      <div class="fcard" style="--k:2" data-no="2"><b>기획과 구조</b><span>제목 후보, 핵심 요약, 글의 뼈대를 함께 짭니다.</span></div>
-      <div class="fcard" style="--k:3" data-no="3"><b>초안 제작</b><span>글, 카드뉴스, 릴스 대본을 정해 둔 형식으로 만듭니다.</span></div>
-      <div class="fcard" style="--k:4" data-no="4"><b>검수와 발행</b><span>사실 확인과 표현은 사람이 봅니다. 발행도 사람이 누릅니다.</span></div>
-      <div class="fcard" style="--k:5" data-no="5"><b>숫자로 복기</b><span>정해진 주기로 반응을 보고 다음 소재에 반영합니다.</span></div>
-    </div>
   
     <div class="build s1 p1" id="build">
       <span class="live"><u></u>지금 만드는 중</span>
       <div class="bsteps">
-        <button type="button" data-k="1"><i>1</i>주제</button><button type="button" data-k="2"><i>2</i>구조</button><button type="button" data-k="3"><i>3</i>초안</button><button type="button" data-k="4"><i>4</i>검수</button><button type="button" data-k="5"><i>5</i>복기</button>
+        <button type="button" data-k="1"><i>1</i>주제 찾기<small>반응 좋은 소재와 이슈를 매일 모읍니다</small></button><button type="button" data-k="2"><i>2</i>기획과 구조<small>제목 후보와 글의 뼈대를 함께 짭니다</small></button><button type="button" data-k="3"><i>3</i>초안 제작<small>정해 둔 형식으로 글, 카드뉴스, 릴스 대본을 만듭니다</small></button><button type="button" data-k="4"><i>4</i>검수와 발행<small>사실 확인과 표현은 사람이 봅니다. 발행도 사람이 누릅니다</small></button><button type="button" data-k="5"><i>5</i>숫자로 복기<small>정해진 주기로 반응을 보고 다음 소재에 반영합니다</small></button>
         <div class="bline"><i id="bfill"></i></div>
       </div>
       <div class="bstage">
@@ -471,7 +469,7 @@ footer{padding-block:40px 56px;color:var(--mute);font-size:13px}
           <div class="bstamp">검수 완료 ✓</div>
           <div class="bstat"><span>♡ 반응 기록</span><div class="mb"><i style="--v:40%"></i><i style="--v:70%"></i><i style="--v:55%"></i><i style="--v:90%"></i></div></div>
         </div>
-        <p class="bcap" id="bcap">1. 주제를 고릅니다</p><p class="tick" id="btick">주제 후보를 모으는 중</p>
+        <p class="bcap" id="bcap">1. 주제 찾기</p><p class="tick" id="btick">주제 후보를 모으는 중</p>
       </div>
     </div>
   </section>
@@ -594,7 +592,7 @@ footer{padding-block:40px 56px;color:var(--mute);font-size:13px}
 (function(){
   var b=document.getElementById('build');if(!b)return;
   var btns=[].slice.call(b.querySelectorAll('.bsteps button')),fill=document.getElementById('bfill'),cap=document.getElementById('bcap');
-  var ticks=['주제 후보를 모으는 중','뼈대를 짜는 중','글과 사진을 채우는 중','검수를 기다리는 중','반응 숫자를 모으는 중'],caps=['1. 주제를 고릅니다','2. 뼈대를 짭니다','3. 글과 사진을 채웁니다','4. 사람이 검수합니다','5. 올린 뒤 반응을 기록합니다'];
+  var ticks=['주제 후보를 모으는 중','뼈대를 짜는 중','글과 사진을 채우는 중','검수를 기다리는 중','반응 숫자를 모으는 중'],caps=['1. 주제 찾기 · 반응 좋은 소재와 이슈를 매일 모읍니다. 고르는 건 사람입니다.','2. 기획과 구조 · 제목 후보와 글의 뼈대를 함께 짭니다.','3. 초안 제작 · 정해 둔 형식으로 글, 카드뉴스, 릴스 대본을 만듭니다.','4. 검수와 발행 · 사실 확인과 표현은 사람이 보고, 발행도 사람이 누릅니다.','5. 숫자로 복기 · 정해진 주기로 반응을 보고 다음 소재에 반영합니다.'];
   var k=0,vis=true,hold=false,reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var bt=b.querySelector('.bt'),full=bt.textContent,tt=null;function typeTitle(n){clearInterval(tt);if(n<3||reduce){bt.textContent=n<3?'':full;return}bt.textContent='';var c=0;tt=setInterval(function(){c++;bt.textContent=full.slice(0,c);if(c>=full.length)clearInterval(tt)},70)}
   function set(n){k=n;for(var i=1;i<=5;i++){b.classList.toggle('p'+i,i<=n)}
