@@ -315,6 +315,10 @@ a.tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(14,21,38,.14
 .bsteps button small{font-weight:400;color:#8fa0cc;font-size:12px;max-width:150px;text-align:center;line-height:1.4;margin-top:-2px}
 .bcap{text-align:center;max-width:620px;line-height:1.5}
 @media (max-width:760px){.bsteps button small{display:none}}
+
+.fcard .ic{width:46px;height:46px;padding:10px;border-radius:14px;background:var(--accent-soft);color:var(--accent);display:block;margin-bottom:12px;animation:icp 3.2s ease-in-out infinite;animation-delay:calc(var(--k)*.3s)}
+@keyframes icp{50%{transform:translateY(-3px) scale(1.06)}}
+@media (prefers-reduced-motion:reduce){.fcard .ic{animation:none}}
 footer{padding-block:40px 56px;color:var(--mute);font-size:13px}
 @media (max-width:700px){.flow .col::after{display:none}.scene{height:clamp(220px,62vw,300px)}}
 @media (prefers-reduced-motion:reduce){.ring{transition:none}.bg{transition:none}a.tile:hover{transform:none}}
@@ -477,20 +481,20 @@ footer{padding-block:40px 56px;color:var(--mute);font-size:13px}
   <section class="block">
     <h2>이렇게 관리합니다</h2>
     <div class="fgrid">
-      <div class="fcard" style="--k:1"><b>진행판 한 장</b><span>아이디어마다 상태, 담당, 기다리는 것, 링크를 한 줄로. 막힌 곳이 바로 보입니다.</span></div>
-      <div class="fcard" style="--k:2"><b>역할 분담</b><span>기획, 원고, 영상, 디자인, 광고를 나누고 각자 맡은 일만 합니다.</span></div>
-      <div class="fcard" style="--k:3"><b>브랜드 규칙 문서</b><span>색, 말투, 쓰면 안 되는 표현을 파일로 두고 모든 작업이 먼저 읽습니다.</span></div>
-      <div class="fcard" style="--k:4"><b>성과 기록</b><span>게시물 반응을 주기적으로 기록하고 열린 항목을 목록으로 남깁니다.</span></div>
+      <div class="fcard" style="--k:1"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/></svg><b>진행판 한 장</b><span>아이디어마다 상태, 담당, 기다리는 것, 링크를 한 줄로. 막힌 곳이 바로 보입니다.</span></div>
+      <div class="fcard" style="--k:2"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c3 .3 5 2.5 5 5.8"/></svg><b>역할 분담</b><span>기획, 원고, 영상, 디자인, 광고를 나누고 각자 맡은 일만 합니다.</span></div>
+      <div class="fcard" style="--k:3"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg><b>브랜드 규칙 문서</b><span>색, 말투, 쓰면 안 되는 표현을 파일로 두고 모든 작업이 먼저 읽습니다.</span></div>
+      <div class="fcard" style="--k:4"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><b>성과 기록</b><span>게시물 반응을 주기적으로 기록하고 열린 항목을 목록으로 남깁니다.</span></div>
     </div>
   </section>
 
   <section class="block">
     <h2>일할 때 지키는 기준</h2>
     <div class="fgrid">
-      <div class="fcard" style="--k:1"><b>사람이 최종 확인</b><span>공개 전에 담당자가 승인합니다.</span></div>
-      <div class="fcard" style="--k:2"><b>성과를 보장하지 않음</b><span>숫자는 측정한 만큼만 말합니다.</span></div>
-      <div class="fcard" style="--k:3"><b>기준에 어긋나면 만들지 않음</b><span>의료·표시광고 기준에 어긋날 수 있는 소재는 제외합니다.</span></div>
-      <div class="fcard" style="--k:4"><b>개인정보는 다루지 않음</b><span>고객 정보는 소재에 쓰지 않습니다.</span></div>
+      <div class="fcard" style="--k:1"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><b>사람이 최종 확인</b><span>공개 전에 담당자가 승인합니다.</span></div>
+      <div class="fcard" style="--k:2"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M6 20h12M5 7h14"/><path d="M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0z"/></svg><b>성과를 보장하지 않음</b><span>숫자는 측정한 만큼만 말합니다.</span></div>
+      <div class="fcard" style="--k:3"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg><b>기준에 어긋나면 만들지 않음</b><span>의료·표시광고 기준에 어긋날 수 있는 소재는 제외합니다.</span></div>
+      <div class="fcard" style="--k:4"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><b>개인정보는 다루지 않음</b><span>고객 정보는 소재에 쓰지 않습니다.</span></div>
     </div>
   </section>
 
