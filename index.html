@@ -293,6 +293,23 @@ a.tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(14,21,38,.14
 .sc.on .adpv{animation:adin .7s ease .2s both}
 @keyframes adin{from{opacity:0;transform:translateY(12px) rotate(2deg)}to{opacity:1;transform:rotate(2deg)}}
 @media (max-width:700px){.adpv{width:96px;top:auto;bottom:10px}.adpv span{font-size:10px;padding:3px 6px}}
+
+.trio .ph-h.cg{background:#2d7f6a}
+.trio .coach2{gap:1.2cqh}
+.trio .hand{background:#e3f2ec;border-radius:1.6cqh;padding:1.4cqh 1.6cqh;color:#1f4d41;font-weight:700}
+.trio .hand small{display:block;font-weight:500;color:#4c7f70;font-size:1.9cqh;margin-bottom:.4cqh}
+.trio .tl{display:flex;gap:1cqh}
+.trio .tk{flex:1;background:#fff;border:1px solid #dfe3ee;border-radius:1.3cqh;padding:1cqh 1.2cqh}
+.trio .tk em{display:block;font-style:normal;color:#6b7690;font-size:1.7cqh}
+.trio .tk strong{font-size:3.4cqh;color:#2d7f6a}
+.trio .chart{background:#fff;border:1px solid #dfe3ee;border-radius:1.3cqh;padding:1cqh;height:14cqh}
+.trio .chart svg{width:100%;height:100%;overflow:visible}
+.trio .ln{fill:none;stroke:#2d7f6a;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;stroke-dasharray:140;stroke-dashoffset:140;animation:lnd 7s ease-in-out infinite}
+@keyframes lnd{0%{stroke-dashoffset:140}35%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:140}}
+.trio .dd{display:flex;gap:.8cqh;font-size:1.9cqh}
+.trio .dd i{flex:1;text-align:center;font-style:normal;border-radius:1cqh;padding:1cqh 0;background:#eef1f8;color:#7a8499}
+.trio .dd i.y{background:#2d7f6a;color:#fff}
+@media (prefers-reduced-motion:reduce){.trio .ln{animation:none;stroke-dashoffset:0}}
 footer{padding-block:40px 56px;color:var(--mute);font-size:13px}
 @media (max-width:700px){.flow .col::after{display:none}.scene{height:clamp(220px,62vw,300px)}}
 @media (prefers-reduced-motion:reduce){.ring{transition:none}.bg{transition:none}a.tile:hover{transform:none}}
@@ -323,10 +340,11 @@ footer{padding-block:40px 56px;color:var(--mute);font-size:13px}
 <div class="ev b" style="--i:2"><i>15:00</i>광고 보고 확인</div>
 <div class="ev b" style="--i:3"><i>18:30</i>콘텐츠 검수</div>
 <div class="ev b" style="--i:4"><i>20:00</i>운동</div></div><div class="ex">예시 일정</div></div>
-<div class="ph"><div class="ph-h">체력단련 코치<em>운동 기록</em></div><div class="ph-b coach">
-<div class="wk"><span style="--h:55%"></span><span style="--h:80%"></span><span style="--h:35%"></span><span style="--h:90%"></span><span style="--h:60%"></span><span style="--h:25%"></span><span style="--h:70%"></span></div>
-<div class="wd"><i>월</i><i>화</i><i>수</i><i>목</i><i>금</i><i>토</i><i>일</i></div>
-<div class="b ai" style="--i:1"><u>코치</u>이번 주는 꾸준했어요. 오늘은 가볍게 걸어요</div></div><div class="ex">예시 화면 · 가짜 숫자</div></div>
+<div class="ph coachph"><div class="ph-h cg">코치<em>운동 기록</em></div><div class="ph-b coach2">
+<div class="hand b" style="--i:0"><small>코치의 오늘 한마디</small>딱 좋은 흐름이에요. 하던 대로 꾸준히 가요</div>
+<div class="tl"><div class="tk b" style="--i:1"><em>이번 주 자전거</em><strong>3일</strong></div><div class="tk b" style="--i:2"><em>컨디션</em><strong>+4</strong></div><div class="tk b" style="--i:3"><em>운동 시간</em><strong>5시간</strong></div></div>
+<div class="chart b" style="--i:4"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><polyline class="ln" points="0,30 14,26 28,28 42,18 56,22 70,12 84,16 100,6"/></svg></div>
+<div class="dd b" style="--i:5"><i class="y">월</i><i class="y">화</i><i>수</i><i class="y">목</i><i>금</i><i class="y">토</i><i>일</i></div></div><div class="ex">예시 화면 · 가짜 숫자</div></div>
 </div><span class="cap">깨톡 · 일정 · 코치 (예시 화면)</span></article>
 <article class="slide phoneslide" data-t="플랜짐 예약·회원관리 앱" data-d="회원은 휴대폰에서 예약하고 남은 횟수를 보고, 선생님은 일정을 관리합니다. 화면의 이름과 숫자는 연습용 가짜 데이터입니다." data-s="제작 중" data-u="" data-img="img/app-home.jpg"><div class="phones"><div class="phone"><img src="img/app-home.jpg" alt="회원 홈 화면"></div><div class="phone lower"><img src="img/app-book.jpg" alt="예약 화면"></div></div><span class="cap">플랜짐 예약앱</span></article>
         <article class="slide " data-t="토월극장 3D 좌석 시야" data-d="앞자리, 뒷자리, 양옆, 2층·3층까지 자리마다 무대가 어떻게 보이는지 3D로 확인합니다. 손가락이나 마우스로 돌려 볼 수 있습니다. 이 극장을 시작으로 다른 극장과 영화관의 좌석 시야도 만들 예정입니다." data-s="공개 중" data-u="https://zilzilcoco-lab.github.io/towol-seat-view/" data-img="img/towol.jpg"><video src="img/towol-seats.mp4" poster="img/towol-seats-poster.jpg" autoplay muted loop playsinline preload="auto"></video><span class="cap">토월극장 3D 좌석 시야</span></article>
@@ -376,10 +394,11 @@ footer{padding-block:40px 56px;color:var(--mute);font-size:13px}
 <div class="ev b" style="--i:2"><i>15:00</i>광고 보고 확인</div>
 <div class="ev b" style="--i:3"><i>18:30</i>콘텐츠 검수</div>
 <div class="ev b" style="--i:4"><i>20:00</i>운동</div></div><div class="ex">예시 일정</div></div>
-<div class="ph"><div class="ph-h">체력단련 코치<em>운동 기록</em></div><div class="ph-b coach">
-<div class="wk"><span style="--h:55%"></span><span style="--h:80%"></span><span style="--h:35%"></span><span style="--h:90%"></span><span style="--h:60%"></span><span style="--h:25%"></span><span style="--h:70%"></span></div>
-<div class="wd"><i>월</i><i>화</i><i>수</i><i>목</i><i>금</i><i>토</i><i>일</i></div>
-<div class="b ai" style="--i:1"><u>코치</u>이번 주는 꾸준했어요. 오늘은 가볍게 걸어요</div></div><div class="ex">예시 화면 · 가짜 숫자</div></div>
+<div class="ph coachph"><div class="ph-h cg">코치<em>운동 기록</em></div><div class="ph-b coach2">
+<div class="hand b" style="--i:0"><small>코치의 오늘 한마디</small>딱 좋은 흐름이에요. 하던 대로 꾸준히 가요</div>
+<div class="tl"><div class="tk b" style="--i:1"><em>이번 주 자전거</em><strong>3일</strong></div><div class="tk b" style="--i:2"><em>컨디션</em><strong>+4</strong></div><div class="tk b" style="--i:3"><em>운동 시간</em><strong>5시간</strong></div></div>
+<div class="chart b" style="--i:4"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><polyline class="ln" points="0,30 14,26 28,28 42,18 56,22 70,12 84,16 100,6"/></svg></div>
+<div class="dd b" style="--i:5"><i class="y">월</i><i class="y">화</i><i>수</i><i class="y">목</i><i>금</i><i class="y">토</i><i>일</i></div></div><div class="ex">예시 화면 · 가짜 숫자</div></div>
 </div></div><div class="tb"><b>깨톡 · 일정 · 코치<em class="pill">운영 중</em></b><span class="d">AI끼리 대화하고 일정과 운동을 챙기는 화면 (예시)</span></div></div>
     </div>
   </section>
