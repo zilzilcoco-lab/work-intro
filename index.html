@@ -4,6 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:title" content="클로드와 함께 만든 것들">
+<meta property="og:description" content="홈페이지, 앱, 3D, 콘텐츠를 AI와 함께 만들고 운영해 온 작업 소개">
+<meta property="og:image" content="https://zilzilcoco-lab.github.io/work-intro/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://zilzilcoco-lab.github.io/work-intro/">
+<meta name="description" content="홈페이지, 앱, 3D, 콘텐츠를 AI와 함께 만들고 운영해 온 작업 소개">
+<meta name="twitter:card" content="summary_large_image">
 <title>클로드와 함께 만든 것들</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
 <style>
@@ -146,6 +155,23 @@ a.tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(14,21,38,.14
 .team li{background:var(--accent-soft);color:var(--fg);font-size:13px;padding:2px 9px;border-radius:99px}
 .org-note{margin:14px 0 0;color:var(--mute);font-size:14px}
 @media (max-width:700px){.hl{display:none}}
+
+/* 책 펼침 */
+.bookwrap{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0e1630,#1b2a5c);perspective:1500px;overflow:hidden}
+.book{position:relative;width:54%;aspect-ratio:1280/764;transform-style:preserve-3d;animation:bkmove 8s ease-in-out infinite;box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.book .pg{position:absolute;inset:0;background:#fff;border-radius:3px;overflow:hidden}
+.book .pg img{width:100%;height:100%;object-fit:cover;display:block}
+.book .cv{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;animation:bkopen 8s ease-in-out infinite}
+.book .front,.book .back{position:absolute;inset:0;backface-visibility:hidden;border-radius:3px}
+.book .front{background:linear-gradient(135deg,#b8c8e6,#8ea6d4);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#16213f;box-shadow:inset 0 0 0 3px rgba(255,255,255,.35)}
+.book .front b{font-size:clamp(20px,3.6vw,40px);font-weight:900;letter-spacing:.2em;padding-left:.2em}
+.book .front small{font-size:clamp(10px,1.2vw,14px);margin-top:6px;letter-spacing:.08em}
+.book .back{transform:rotateY(180deg);background:#eef1f8;box-shadow:inset 0 0 0 3px rgba(0,0,0,.05)}
+@keyframes bkopen{0%,12%{transform:rotateY(0)}42%,80%{transform:rotateY(-172deg)}100%{transform:rotateY(0)}}
+@keyframes bkmove{0%,12%{transform:translateX(0)}42%,80%{transform:translateX(52%)}100%{transform:translateX(0)}}
+.tile .th.bookth{display:block}
+.slide.bookslide{background:#0e1630}
+@media (prefers-reduced-motion:reduce){.book,.book .cv{animation:none}.book .cv{transform:rotateY(-172deg)}.book{transform:translateX(52%)}}
 footer{padding-block:40px 56px;color:var(--mute);font-size:13px}
 @media (max-width:700px){.flow .col::after{display:none}.scene{height:clamp(220px,62vw,300px)}}
 @media (prefers-reduced-motion:reduce){.ring{transition:none}.bg{transition:none}a.tile:hover{transform:none}}
@@ -168,7 +194,7 @@ footer{padding-block:40px 56px;color:var(--mute);font-size:13px}
         <article class="slide " data-t="프리미엄임포트 홈페이지" data-d="카이저와 토크피트니스 장비 수입사의 사이트입니다. 제품, 납품 사례, 견적과 문의를 한곳에 모았습니다." data-s="제작 중 (초안)" data-u="https://premiumimport.pages.dev" data-img="img/pi-home.jpg"><img src="img/pi-home.jpg" alt="프리미엄임포트 홈페이지"><span class="cap">프리미엄임포트 홈페이지</span></article>
         <article class="slide " data-t="고니프로 빌딩 (가상 사무실)" data-d="여러 작업 창이 층별로 일하는 모습을 한 화면에서 보는 가상 사무실입니다. 층마다 맡은 팀이 있고, 지금 누가 일하는지 보입니다." data-s="운영 중" data-u="" data-img="img/office.jpg"><img src="img/office.jpg" alt="고니프로 빌딩 (가상 사무실)"><span class="cap">고니프로 빌딩</span></article>
         <article class="slide " data-t="뚱땅 교도소" data-d="웹에서 캐릭터가 되어 걸어 다니며 체험하는 3D 공간입니다. 지금은 1단계를 만들고 있습니다." data-s="제작 중" data-u="https://ddungddang-prison.gonipro.workers.dev" data-img="img/prison.jpg"><img src="img/prison.jpg" alt="뚱땅 교도소"><span class="cap">뚱땅 교도소</span></article>
-        <article class="slide " data-t="최은영 작가 홈페이지" data-d="소설가 최은영 작가님의 작품과 소식을 담은 홈페이지입니다. 지금은 시안 단계입니다." data-s="제작 중 (시안)" data-u="" data-img="img/choi.jpg"><img src="img/choi.jpg" alt="최은영 작가 홈페이지"><span class="cap">최은영 작가 홈페이지</span></article>
+        <article class="slide bookslide" data-t="최은영 작가 홈페이지" data-d="소설가 최은영 작가님의 작품과 소식을 담은 홈페이지입니다. 지금은 시안 단계입니다." data-s="제작 중 (시안)" data-u="" data-img="img/choi.jpg"><div class="bookwrap"><div class="book"><div class="pg"><img src="img/choi.jpg" alt="최은영 작가 홈페이지"></div><div class="cv"><div class="front"><b>최은영</b><small>소설가 · 공식 홈페이지</small></div><div class="back"></div></div></div></div><span class="cap">최은영 작가 홈페이지</span></article>
         <article class="slide contain" data-t="릴스 · 카드뉴스 제작" data-d="브랜드별 규칙으로 표지, 대본, 캡션까지 정해진 틀에 맞춰 만들고 진행판으로 관리합니다." data-s="운영 중" data-u="" data-img="img/reels-cover.jpg"><img src="img/reels-cover.jpg" alt="릴스 · 카드뉴스 제작"><span class="cap">릴스 · 카드뉴스</span></article>
       </div>
     </div>
