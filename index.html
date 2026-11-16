@@ -38,6 +38,18 @@ ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px}
 .work summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:10px}
 .work .body{padding:0 16px 16px;display:flex;flex-direction:column;gap:12px}
 .work img{width:100%;height:auto;border-radius:8px;border:1px solid var(--line);display:block}
+.ov-h{font-size:14px;letter-spacing:.04em;color:var(--mute);margin:18px 0 8px;font-weight:500}
+.ov{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden}
+.ov-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;border-top:1px solid var(--line);flex-wrap:wrap}
+.ov-row:first-child{border-top:0}
+.ov-main{display:flex;flex-direction:column;min-width:0;flex:1 1 220px}
+.ov-main span{color:var(--mute);font-size:14px}
+.ov-side{display:flex;align-items:center;gap:10px}
+.pill{font-style:normal;font-size:12px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.pill.wip{background:var(--warn-soft);color:var(--warn)}
+.pill.int,.pill.test{background:var(--line);color:var(--mute)}
+.go,.golink{color:var(--accent);font-weight:500;text-decoration:none;font-size:14px}
+.go:hover,.golink:hover{text-decoration:underline}
 small{color:var(--mute)}
 </style>
 </head>
@@ -48,6 +60,37 @@ small{color:var(--mute)}
   <h1>클로드와 함께 일해 온 방식</h1>
   <p class="lead">AI(클로드)를 일꾼처럼 부려 홈페이지, 앱, 콘텐츠, 광고를 만들어 왔습니다. 지금까지 한 일을 보여 드리고, 대표님들 눈에는 어떻게 보이는지 듣고 싶습니다.</p>
 </header>
+
+<section id="overview">
+  <h2>한눈에 보기</h2>
+  <p style="color:var(--mute);margin-bottom:12px">지금까지 만들고 운영해 온 것을 한 표로 정리했습니다. 아래에서 눌러 보면 자세히 나옵니다.</p>
+  <h3 class="ov-h">홈페이지 · 앱</h3>
+  <ul class="ov">
+    <li class="ov-row"><div class="ov-main"><b>플랜짐 홈페이지</b><span>PT·필라테스 스튜디오 소개와 상담 신청</span></div><div class="ov-side"><em class="pill live">공개 중</em><a class="go" href="https://plangym.co.kr" target="_blank" rel="noopener">열어 보기 ↗</a></div></li>
+    <li class="ov-row"><div class="ov-main"><b>플랜짐 예약·회원관리 앱</b><span>예약, 남은 횟수 차감, 선생님 일정</span></div><div class="ov-side"><em class="pill wip">제작 중</em></div></li>
+    <li class="ov-row"><div class="ov-main"><b>프리미엄임포트 홈페이지</b><span>피트니스 장비 수입사 통합 사이트(초안)</span></div><div class="ov-side"><em class="pill wip">제작 중</em><a class="go" href="https://premiumimport.pages.dev" target="_blank" rel="noopener">열어 보기 ↗</a></div></li>
+    <li class="ov-row"><div class="ov-main"><b>최은영 작가 홈페이지</b><span>작가님의 작품과 소식</span></div><div class="ov-side"><em class="pill live">공개 중</em></div></li>
+  </ul>
+  <h3 class="ov-h">3D · 체험</h3>
+  <ul class="ov">
+    <li class="ov-row"><div class="ov-main"><b>토월극장 3D 좌석 시야</b><span>좌석에서 무대가 어떻게 보이는지 확인</span></div><div class="ov-side"><em class="pill live">공개 중</em><a class="go" href="https://zilzilcoco-lab.github.io/towol-seat-view/" target="_blank" rel="noopener">열어 보기 ↗</a></div></li>
+    <li class="ov-row"><div class="ov-main"><b>뚱땅 교도소</b><span>웹에서 걸어 다니는 3D 체험 공간(1단계)</span></div><div class="ov-side"><em class="pill wip">제작 중</em><a class="go" href="https://ddungddang-prison.gonipro.workers.dev" target="_blank" rel="noopener">열어 보기 ↗</a></div></li>
+  </ul>
+  <h3 class="ov-h">콘텐츠 · 광고</h3>
+  <ul class="ov">
+    <li class="ov-row"><div class="ov-main"><b>블로그 여러 개 운영</b><span>주제별 블로그의 기획, 초안, 분석 반복</span></div><div class="ov-side"><em class="pill live">공개 중</em></div></li>
+    <li class="ov-row"><div class="ov-main"><b>카드뉴스 · 릴스</b><span>브랜드별 규칙으로 표지와 대본까지 제작</span></div><div class="ov-side"><em class="pill live">공개 중</em></div></li>
+    <li class="ov-row"><div class="ov-main"><b>인스타 광고</b><span>직접 세팅해 소재별 반응 비교</span></div><div class="ov-side"><em class="pill live">공개 중</em></div></li>
+    <li class="ov-row"><div class="ov-main"><b>카이저 뉴스레터</b><span>웹페이지 형태 뉴스레터 발행 틀</span></div><div class="ov-side"><em class="pill wip">제작 중</em></div></li>
+  </ul>
+  <h3 class="ov-h">만드는 도구 · 운영</h3>
+  <ul class="ov">
+    <li class="ov-row"><div class="ov-main"><b>콘텐츠 진행판과 규칙 문서</b><span>진행 상태, 브랜드 규칙, 금지 표현 목록</span></div><div class="ov-side"><em class="pill int">내부 사용</em></div></li>
+    <li class="ov-row"><div class="ov-main"><b>AI 그림 생성 도구</b><span>내 컴퓨터에서 돌리는 그림 생성, 광고·블로그용</span></div><div class="ov-side"><em class="pill int">내부 사용</em></div></li>
+    <li class="ov-row"><div class="ov-main"><b>가상 사무실 화면</b><span>여러 작업 창의 진행 상황을 한 화면에서 보기</span></div><div class="ov-side"><em class="pill int">내부 사용</em></div></li>
+    <li class="ov-row"><div class="ov-main"><b>이짜 유튜브</b><span>반려견 채널 시험 프로젝트, 반응 없으면 접기</span></div><div class="ov-side"><em class="pill test">시험 중</em></div></li>
+  </ul>
+</section>
 
 <section>
   <h2>지금까지 만든 것 <small>(눌러서 열어 보세요)</small></h2>
@@ -60,6 +103,7 @@ small{color:var(--mute)}
           <li>첫 화면에서 "체험수업 문의"와 "간단 상담 신청"으로 바로 이어지게 설계했습니다.</li>
           <li>평가, 프로그램, 그룹수업, 어린이, 회원 사례, 가격, 오시는 길까지 한 사이트에 담았습니다.</li>
           <li>회원 예약 버튼과 채팅 문의 버튼을 모든 화면에 두었습니다.</li>
+          <li><a class="golink" href="https://plangym.co.kr" target="_blank" rel="noopener">실제 플랜짐 홈페이지 열기 ↗</a></li>
         </ul>
       </div>
     </details>
@@ -84,6 +128,7 @@ small{color:var(--mute)}
           <li>제품·견적, 활용 분야, 납품 사례, 설치·A/S, 문의 메뉴를 만들었습니다.</li>
           <li>견적함과 문의 양식으로 도입 문의를 받는 구조입니다.</li>
           <li>제작 중인 초안 단계입니다.</li>
+          <li><a class="golink" href="https://premiumimport.pages.dev" target="_blank" rel="noopener">프리미엄임포트 초안 열기 ↗</a></li>
         </ul>
       </div>
     </details>
@@ -92,6 +137,7 @@ small{color:var(--mute)}
       <div class="body"><ul>
         <li>작가님의 작품과 소식을 담은 개인 홈페이지를 만들어 드렸습니다.</li>
         <li>극장 좌석을 고르면 무대가 어떻게 보이는지 3D로 확인할 수 있는 페이지를 만들었습니다.</li>
+      <li><a class="golink" href="https://zilzilcoco-lab.github.io/towol-seat-view/" target="_blank" rel="noopener">토월극장 3D 좌석 시야 열기 ↗</a></li>
       </ul></div>
     </details>
     <details class="work">
