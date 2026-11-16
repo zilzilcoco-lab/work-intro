@@ -4,206 +4,209 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>클로드로 일하는 방법</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<title>클로드와 함께 만든 것들</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
 <style>
-body{margin:0}
-/* 레이아웃: 한 칸짜리 읽기 문서. 큰 제목 → 만든 것 → 적용 분야 → 원칙 → 첫 한 달 → 질문 */
-:root{--bg:#f6f7f5;--fg:#1c2421;--mute:#5b6660;--line:#d9dfdb;--card:#ffffff;--accent:#1f6f5c;--accent-soft:#e1f0ea;--warn:#8a5a00;--warn-soft:#fbf0d9;--font:'Noto Sans KR',-apple-system,'Apple SD Gothic Neo',sans-serif}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121715;--fg:#e8eeea;--mute:#9aa8a1;--line:#2b3531;--card:#1a211e;--accent:#5cc4a6;--accent-soft:#1c2e28;--warn:#e8b95a;--warn-soft:#2e2814;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#121715;--fg:#e8eeea;--mute:#9aa8a1;--line:#2b3531;--card:#1a211e;--accent:#5cc4a6;--accent-soft:#1c2e28;--warn:#e8b95a;--warn-soft:#2e2814;color-scheme:dark}
-body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:16px;line-height:1.65;padding-block:32px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-main{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:36px}
-h1{font-size:clamp(28px,6vw,40px);line-height:1.25;margin:0;text-wrap:balance;font-weight:700}
-h2{font-size:20px;margin:0 0 12px;font-weight:700;text-wrap:balance}
-p{margin:0}
-.lead{font-size:18px;color:var(--mute);margin-top:12px}
-.tag{display:inline-block;font-size:13px;letter-spacing:.04em;color:var(--accent);background:var(--accent-soft);padding:2px 10px;border-radius:999px;margin-bottom:12px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
-.card b{display:block;margin-bottom:4px}
-.card span{color:var(--mute);font-size:15px}
-ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
-.rule{border-left:3px solid var(--accent);padding:4px 0 4px 14px}
-.note{background:var(--warn-soft);color:var(--fg);border-radius:10px;padding:14px 16px;font-size:15px}
-.note b{color:var(--warn)}
-ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px}
-.works{display:flex;flex-direction:column;gap:10px}
-.work{background:var(--card);border:1px solid var(--line);border-radius:10px}
-.work summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;flex-direction:column;gap:2px;position:relative;padding-right:44px}
-.work summary::-webkit-details-marker{display:none}
-.work summary::after{content:"+";position:absolute;right:16px;top:12px;font-size:22px;color:var(--accent)}
-.work[open] summary::after{content:"\2212"}
-.work summary span{color:var(--mute);font-size:15px}
-.work summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:10px}
-.work .body{padding:0 16px 16px;display:flex;flex-direction:column;gap:12px}
-.work img{width:100%;height:auto;border-radius:8px;border:1px solid var(--line);display:block}
-.ov-h{font-size:14px;letter-spacing:.04em;color:var(--mute);margin:18px 0 8px;font-weight:500}
-.ov{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden}
-.ov-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;border-top:1px solid var(--line);flex-wrap:wrap}
-.ov-row:first-child{border-top:0}
-.ov-main{display:flex;flex-direction:column;min-width:0;flex:1 1 220px}
-.ov-main span{color:var(--mute);font-size:14px}
-.ov-side{display:flex;align-items:center;gap:10px}
-.pill{font-style:normal;font-size:12px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+/* 레이아웃: 어두운 무대(회전 전시) → 병렬 타일 → 만드는 방식 → 기준 → 질문. 모든 묶음은 열로 나란히 */
+:root{--bg:#f4f5f7;--fg:#0e1526;--mute:#59627a;--line:#dde1ea;--card:#ffffff;--accent:#2b59ff;--accent-soft:#e6ecff;--warn:#8a5a00;--warn-soft:#fbf0d9;--stage:#070b17;--font:'Noto Sans KR',-apple-system,'Apple SD Gothic Neo',sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b101d;--fg:#e9edf7;--mute:#9aa4bd;--line:#242c42;--card:#121a2c;--accent:#7a9bff;--accent-soft:#1a2547;--warn:#e8b95a;--warn-soft:#2e2814;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b101d;--fg:#e9edf7;--mute:#9aa4bd;--line:#242c42;--card:#121a2c;--accent:#7a9bff;--accent-soft:#1a2547;--warn:#e8b95a;--warn-soft:#2e2814;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:16px;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h2{font-size:clamp(22px,3.4vw,30px);line-height:1.3;margin:0 0 6px;font-weight:900;letter-spacing:-.01em;text-wrap:balance}
+.sub{color:var(--mute);margin:0 0 20px}
+section.block{padding-block:56px 0}
+/* 무대 */
+.stage{position:relative;color:#fff;background:var(--stage);overflow:hidden;padding-block:44px 28px;isolation:isolate}
+.bg{position:absolute;inset:-10%;background-size:cover;background-position:center;filter:blur(46px) saturate(1.2);opacity:0;transition:opacity 1.4s ease;z-index:-2;transform:scale(1.1)}
+.bg.on{opacity:.55}
+.stage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,11,23,.55),rgba(7,11,23,.2) 40%,rgba(7,11,23,.85));z-index:-1}
+.eyebrow{font-size:13px;letter-spacing:.12em;color:#9fb4ff;font-weight:700}
+.stage h1{font-size:clamp(34px,7vw,72px);line-height:1.08;margin:10px 0 12px;font-weight:900;letter-spacing:-.025em;text-wrap:balance}
+.stage .lead{font-size:clamp(15px,2vw,19px);color:#c6cde0;margin:0;max-width:640px;text-wrap:balance}
+.scene{perspective:1500px;height:clamp(250px,44vw,470px);margin-top:22px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.scene.drag{cursor:grabbing}
+.ring{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 1.05s cubic-bezier(.22,.8,.2,1)}
+.ring.nodrag{transition:none}
+.slide{position:absolute;left:50%;top:50%;width:var(--w);height:var(--h);margin:calc(var(--h)/-2) 0 0 calc(var(--w)/-2);border-radius:14px;overflow:hidden;background:#10172a;box-shadow:0 18px 50px rgba(0,0,0,.55);transition:opacity .9s ease;backface-visibility:hidden;border:1px solid rgba(255,255,255,.14)}
+.slide img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;-webkit-user-drag:none}
+.slide.contain img{object-fit:contain}
+.slide .cap{position:absolute;left:12px;bottom:12px;background:rgba(7,11,23,.78);color:#fff;font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;backdrop-filter:blur(6px)}
+.info{margin-top:20px;display:flex;gap:20px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;min-height:84px}
+.info-t{flex:1 1 320px;min-width:0;transition:opacity .35s ease}
+.info-t.fade{opacity:0}
+.info-t b{font-size:22px;font-weight:900;display:block}
+.info-t p{margin:2px 0 0;color:#c6cde0}
+.pill{display:inline-block;font-style:normal;font-size:12px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:700;vertical-align:middle;margin-left:8px}
 .pill.wip{background:var(--warn-soft);color:var(--warn)}
-.pill.int,.pill.test{background:var(--line);color:var(--mute)}
-.go,.golink{color:var(--accent);font-weight:500;text-decoration:none;font-size:14px}
-.go:hover,.golink:hover{text-decoration:underline}
-small{color:var(--mute)}
+.stage .pill{background:rgba(159,180,255,.2);color:#cdd9ff}
+.stage .pill.wip{background:rgba(232,185,90,.2);color:#f1cf86}
+.ctl{display:flex;align-items:center;gap:10px}
+.btn{appearance:none;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;font:inherit;font-weight:700;border-radius:999px;padding:9px 18px;cursor:pointer;text-decoration:none;font-size:15px;line-height:1.2}
+.btn:hover{background:rgba(255,255,255,.18)}
+.btn.primary{background:#fff;color:#0b1020;border-color:#fff}
+.btn.primary[hidden]{display:none}
+.btn:focus-visible,.dot:focus-visible,.scene:focus-visible{outline:2px solid #9fb4ff;outline-offset:3px}
+.btn.round{width:42px;height:42px;padding:0;font-size:18px}
+.dots{display:flex;gap:8px;margin-top:18px}
+.dot{width:26px;height:4px;border-radius:2px;border:0;background:rgba(255,255,255,.28);cursor:pointer;padding:0}
+.dot.on{background:#fff}
+/* 병렬 타일 */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.tile{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:0;color:inherit;text-decoration:none;transition:transform .25s ease,box-shadow .25s ease}
+a.tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(14,21,38,.14)}
+.tile .th{aspect-ratio:16/10;background:#10172a;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.tile .th img{width:100%;height:100%;object-fit:cover;display:block}
+.tile .th.contain img{object-fit:contain}
+.tile .th.text{background:linear-gradient(135deg,#1b2a5c,#2b59ff);color:#fff;font-weight:900;font-size:26px;letter-spacing:-.01em;padding:16px;text-align:center}
+.tile .tb{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px}
+.tile .tb b{font-size:17px;font-weight:700}
+.tile .tb span.d{color:var(--mute);font-size:14px}
+.tile .tb .go{color:var(--accent);font-size:14px;font-weight:700;margin-top:6px}
+/* 만드는 방식 등 병렬 열 */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.col{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:0}
+.col b{display:block;font-size:16px;margin-bottom:4px}
+.col span{color:var(--mute);font-size:14px;display:block}
+.flow .col{position:relative}
+.flow .col:not(:last-child)::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:var(--accent);font-weight:900;background:var(--bg);width:20px;text-align:center;z-index:1}
+.cols.q{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.q .col{border-left:3px solid var(--accent);border-radius:6px 12px 12px 6px}
+.q .col b{font-weight:500;font-size:16px;margin:0}
+footer{padding-block:40px 56px;color:var(--mute);font-size:13px}
+@media (max-width:700px){.flow .col::after{display:none}.scene{height:clamp(220px,62vw,300px)}}
+@media (prefers-reduced-motion:reduce){.ring{transition:none}.bg{transition:none}a.tile:hover{transform:none}}
 </style>
 </head>
 <body>
-<main>
-<header>
-  <span class="tag">지금까지 해온 일</span>
-  <h1>클로드와 함께 일해 온 방식</h1>
-  <p class="lead">AI(클로드)를 일꾼처럼 부려 홈페이지, 앱, 콘텐츠, 광고를 만들어 왔습니다. 지금까지 한 일을 보여 드리고, 대표님들 눈에는 어떻게 보이는지 듣고 싶습니다.</p>
+
+<header class="stage">
+  <div class="bg" id="bgA"></div><div class="bg" id="bgB"></div>
+  <div class="wrap">
+    <div class="eyebrow">지금까지 해온 일</div>
+    <h1>클로드와 함께<br>만든 것들</h1>
+    <p class="lead">홈페이지, 앱, 3D, 콘텐츠를 AI와 함께 만들고 운영해 왔습니다. 옆으로 돌려 보세요.</p>
+    <div class="scene" id="scene" tabindex="0" aria-label="만든 것 회전 전시. 좌우 화살표 키로 넘길 수 있습니다">
+      <div class="ring" id="ring">
+        <article class="slide" data-t="플랜짐 홈페이지" data-d="PT·필라테스 스튜디오의 소개와 상담 신청 사이트. 첫 화면에서 체험수업 문의로 바로 이어집니다." data-s="공개 중" data-u="https://plangym.co.kr" data-img="img/plangym-home.jpg"><img src="img/plangym-home.jpg" alt="플랜짐 홈페이지 첫 화면"><span class="cap">플랜짐 홈페이지</span></article>
+        <article class="slide" data-t="토월극장 3D 좌석 시야" data-d="좌석을 고르면 그 자리에서 무대가 어떻게 보이는지 3D로 확인합니다. 손가락이나 마우스로 돌려 볼 수 있습니다." data-s="공개 중" data-u="https://zilzilcoco-lab.github.io/towol-seat-view/" data-img="img/towol.jpg"><img src="img/towol.jpg" alt="토월극장 3D 좌석 시야 화면"><span class="cap">토월극장 3D 좌석 시야</span></article>
+        <article class="slide" data-t="프리미엄임포트 홈페이지" data-d="카이저와 토크피트니스 장비 수입사의 통합 사이트. 제품, 납품 사례, 견적과 문의를 한곳에 모았습니다." data-s="제작 중 (초안)" data-u="https://premiumimport.pages.dev" data-img="img/pi-home.jpg"><img src="img/pi-home.jpg" alt="프리미엄임포트 홈페이지 첫 화면"><span class="cap">프리미엄임포트 홈페이지</span></article>
+        <article class="slide contain" data-t="플랜짐 예약·회원관리 앱" data-d="예약과 취소, 남은 횟수 자동 차감, 선생님 일정과 주말 당번표를 한곳에서 관리하는 앱입니다." data-s="제작 중" data-u="" data-img="img/plangym-m.jpg"><img src="img/plangym-m.jpg" alt="플랜짐 모바일 화면"><span class="cap">플랜짐 예약·회원관리 앱</span></article>
+        <article class="slide contain" data-t="릴스 · 카드뉴스 제작" data-d="브랜드별 규칙으로 표지, 대본, 캡션까지 정해진 틀에 맞춰 만들고, 진행판으로 관리합니다." data-s="운영 중" data-u="" data-img="img/reels-cover.jpg"><img src="img/reels-cover.jpg" alt="릴스 커버 예시"><span class="cap">릴스 · 카드뉴스</span></article>
+      </div>
+    </div>
+    <div class="info">
+      <div class="info-t" id="info"><b id="it"></b><p id="id"></p></div>
+      <div class="ctl">
+        <button class="btn round" id="prev" aria-label="이전">‹</button>
+        <button class="btn round" id="next" aria-label="다음">›</button>
+        <a class="btn primary" id="open" target="_blank" rel="noopener" hidden>실제 화면 열기 ↗</a>
+      </div>
+    </div>
+    <div class="dots" id="dots"></div>
+  </div>
 </header>
 
-<section id="overview">
-  <h2>한눈에 보기</h2>
-  <p style="color:var(--mute);margin-bottom:12px">지금까지 만들고 운영해 온 것을 한 표로 정리했습니다. 아래에서 눌러 보면 자세히 나옵니다.</p>
-  <h3 class="ov-h">홈페이지 · 앱</h3>
-  <ul class="ov">
-    <li class="ov-row"><div class="ov-main"><b>플랜짐 홈페이지</b><span>PT·필라테스 스튜디오 소개와 상담 신청</span></div><div class="ov-side"><em class="pill live">공개 중</em><a class="go" href="https://plangym.co.kr" target="_blank" rel="noopener">열어 보기 ↗</a></div></li>
-    <li class="ov-row"><div class="ov-main"><b>플랜짐 예약·회원관리 앱</b><span>예약, 남은 횟수 차감, 선생님 일정</span></div><div class="ov-side"><em class="pill wip">제작 중</em></div></li>
-    <li class="ov-row"><div class="ov-main"><b>프리미엄임포트 홈페이지</b><span>피트니스 장비 수입사 통합 사이트(초안)</span></div><div class="ov-side"><em class="pill wip">제작 중</em><a class="go" href="https://premiumimport.pages.dev" target="_blank" rel="noopener">열어 보기 ↗</a></div></li>
-    <li class="ov-row"><div class="ov-main"><b>최은영 작가 홈페이지</b><span>작가님의 작품과 소식</span></div><div class="ov-side"><em class="pill live">공개 중</em></div></li>
-  </ul>
-  <h3 class="ov-h">3D · 체험</h3>
-  <ul class="ov">
-    <li class="ov-row"><div class="ov-main"><b>토월극장 3D 좌석 시야</b><span>좌석에서 무대가 어떻게 보이는지 확인</span></div><div class="ov-side"><em class="pill live">공개 중</em><a class="go" href="https://zilzilcoco-lab.github.io/towol-seat-view/" target="_blank" rel="noopener">열어 보기 ↗</a></div></li>
-    <li class="ov-row"><div class="ov-main"><b>뚱땅 교도소</b><span>웹에서 걸어 다니는 3D 체험 공간(1단계)</span></div><div class="ov-side"><em class="pill wip">제작 중</em><a class="go" href="https://ddungddang-prison.gonipro.workers.dev" target="_blank" rel="noopener">열어 보기 ↗</a></div></li>
-  </ul>
-  <h3 class="ov-h">콘텐츠 · 광고</h3>
-  <ul class="ov">
-    <li class="ov-row"><div class="ov-main"><b>블로그 여러 개 운영</b><span>주제별 블로그의 기획, 초안, 분석 반복</span></div><div class="ov-side"><em class="pill live">공개 중</em></div></li>
-    <li class="ov-row"><div class="ov-main"><b>카드뉴스 · 릴스</b><span>브랜드별 규칙으로 표지와 대본까지 제작</span></div><div class="ov-side"><em class="pill live">공개 중</em></div></li>
-    <li class="ov-row"><div class="ov-main"><b>인스타 광고</b><span>직접 세팅해 소재별 반응 비교</span></div><div class="ov-side"><em class="pill live">공개 중</em></div></li>
-    <li class="ov-row"><div class="ov-main"><b>카이저 뉴스레터</b><span>웹페이지 형태 뉴스레터 발행 틀</span></div><div class="ov-side"><em class="pill wip">제작 중</em></div></li>
-  </ul>
-  <h3 class="ov-h">만드는 도구 · 운영</h3>
-  <ul class="ov">
-    <li class="ov-row"><div class="ov-main"><b>콘텐츠 진행판과 규칙 문서</b><span>진행 상태, 브랜드 규칙, 금지 표현 목록</span></div><div class="ov-side"><em class="pill int">내부 사용</em></div></li>
-    <li class="ov-row"><div class="ov-main"><b>AI 그림 생성 도구</b><span>내 컴퓨터에서 돌리는 그림 생성, 광고·블로그용</span></div><div class="ov-side"><em class="pill int">내부 사용</em></div></li>
-    <li class="ov-row"><div class="ov-main"><b>가상 사무실 화면</b><span>여러 작업 창의 진행 상황을 한 화면에서 보기</span></div><div class="ov-side"><em class="pill int">내부 사용</em></div></li>
-    <li class="ov-row"><div class="ov-main"><b>이짜 유튜브</b><span>반려견 채널 시험 프로젝트, 반응 없으면 접기</span></div><div class="ov-side"><em class="pill test">시험 중</em></div></li>
-  </ul>
-</section>
+<main class="wrap">
+  <section class="block">
+    <h2>한눈에 보기</h2>
+    <p class="sub">지금까지 만든 것을 나란히 모았습니다. 눌러 보면 실제 화면으로 넘어갑니다.</p>
+    <div class="tiles">
+      <a class="tile" href="https://plangym.co.kr" target="_blank" rel="noopener"><div class="th"><img src="img/plangym-home.jpg" alt="" loading="lazy"></div><div class="tb"><b>플랜짐 홈페이지<em class="pill">공개 중</em></b><span class="d">PT·필라테스 스튜디오 소개와 상담 신청</span><span class="go">열어 보기 ↗</span></div></a>
+      <a class="tile" href="https://zilzilcoco-lab.github.io/towol-seat-view/" target="_blank" rel="noopener"><div class="th"><img src="img/towol.jpg" alt="" loading="lazy"></div><div class="tb"><b>토월극장 3D 좌석 시야<em class="pill">공개 중</em></b><span class="d">좌석별 무대 시야를 3D로 확인</span><span class="go">열어 보기 ↗</span></div></a>
+      <a class="tile" href="https://premiumimport.pages.dev" target="_blank" rel="noopener"><div class="th"><img src="img/pi-home.jpg" alt="" loading="lazy"></div><div class="tb"><b>프리미엄임포트 홈페이지<em class="pill wip">제작 중</em></b><span class="d">장비 수입사 통합 사이트(초안)</span><span class="go">열어 보기 ↗</span></div></a>
+      <div class="tile"><div class="th contain"><img src="img/plangym-m.jpg" alt="" loading="lazy"></div><div class="tb"><b>플랜짐 예약·회원관리 앱<em class="pill wip">제작 중</em></b><span class="d">예약, 남은 횟수, 선생님 일정</span></div></div>
+      <div class="tile"><div class="th text">최은영 작가<br>홈페이지</div><div class="tb"><b>작가 홈페이지<em class="pill">공개 중</em></b><span class="d">작가님의 작품과 소식</span></div></div>
+      <div class="tile"><div class="th contain"><img src="img/reels-cover.jpg" alt="" loading="lazy"></div><div class="tb"><b>릴스 · 카드뉴스<em class="pill">운영 중</em></b><span class="d">브랜드 규칙으로 표지부터 캡션까지</span></div></div>
+    </div>
+  </section>
 
-<section>
-  <h2>지금까지 만든 것 <small>(눌러서 열어 보세요)</small></h2>
-  <div class="works">
-    <details class="work" open>
-      <summary><b>플랜짐 홈페이지</b><span>PT·필라테스 스튜디오 소개와 상담 신청 사이트</span></summary>
-      <div class="body">
-        <img src="img/plangym-home.jpg" alt="플랜짐 홈페이지 첫 화면" loading="lazy">
-        <ul>
-          <li>첫 화면에서 "체험수업 문의"와 "간단 상담 신청"으로 바로 이어지게 설계했습니다.</li>
-          <li>평가, 프로그램, 그룹수업, 어린이, 회원 사례, 가격, 오시는 길까지 한 사이트에 담았습니다.</li>
-          <li>회원 예약 버튼과 채팅 문의 버튼을 모든 화면에 두었습니다.</li>
-          <li><a class="golink" href="https://plangym.co.kr" target="_blank" rel="noopener">실제 플랜짐 홈페이지 열기 ↗</a></li>
-        </ul>
-      </div>
-    </details>
-    <details class="work">
-      <summary><b>예약·회원관리 앱</b><span>예약, 남은 횟수, 선생님 일정을 한곳에서</span></summary>
-      <div class="body">
-        <img src="img/plangym-m.jpg" alt="플랜짐 모바일 화면" loading="lazy" style="max-width:240px">
-        <ul>
-          <li>예약과 취소, 남은 횟수 자동 차감, 홀딩과 만료를 처리합니다.</li>
-          <li>선생님 불가 시간과 휴일, 주말 당번표를 반영합니다.</li>
-          <li>선생님이 수락해야 예약이 확정되는 방식과 담당 선생님 고정을 지원합니다.</li>
-          <li>현재 개발 중이며 오픈을 준비하고 있습니다.</li>
-        </ul>
-      </div>
-    </details>
-    <details class="work">
-      <summary><b>프리미엄임포트 홈페이지</b><span>피트니스 장비 수입사 통합 사이트</span></summary>
-      <div class="body">
-        <img src="img/pi-home.jpg" alt="프리미엄임포트 홈페이지 첫 화면" loading="lazy">
-        <ul>
-          <li>두 브랜드(카이저, 토크피트니스)를 한 사이트에서 소개합니다.</li>
-          <li>제품·견적, 활용 분야, 납품 사례, 설치·A/S, 문의 메뉴를 만들었습니다.</li>
-          <li>견적함과 문의 양식으로 도입 문의를 받는 구조입니다.</li>
-          <li>제작 중인 초안 단계입니다.</li>
-          <li><a class="golink" href="https://premiumimport.pages.dev" target="_blank" rel="noopener">프리미엄임포트 초안 열기 ↗</a></li>
-        </ul>
-      </div>
-    </details>
-    <details class="work">
-      <summary><b>작가 홈페이지 · 극장 좌석 3D 시야</b><span>작품 소개 사이트와 좌석별 시야 확인 페이지</span></summary>
-      <div class="body"><ul>
-        <li>작가님의 작품과 소식을 담은 개인 홈페이지를 만들어 드렸습니다.</li>
-        <li>극장 좌석을 고르면 무대가 어떻게 보이는지 3D로 확인할 수 있는 페이지를 만들었습니다.</li>
-      <li><a class="golink" href="https://zilzilcoco-lab.github.io/towol-seat-view/" target="_blank" rel="noopener">토월극장 3D 좌석 시야 열기 ↗</a></li>
-      </ul></div>
-    </details>
-    <details class="work">
-      <summary><b>콘텐츠 운영 · 광고 집행</b><span>블로그, 스레드, 카드뉴스, 릴스와 인스타 광고</span></summary>
-      <div class="body"><ul>
-        <li>아래 "콘텐츠를 만드는 방식"과 "관리하는 방식"에서 자세히 보여 드립니다.</li>
-        <li>인스타 광고를 직접 세팅해 돌려 보고, 소재별 반응을 비교했습니다.</li>
-      </ul></div>
-    </details>
-  </div>
-</section>
+  <section class="block">
+    <h2>콘텐츠는 이렇게 만듭니다</h2>
+    <p class="sub">사람이 판단할 곳과 AI가 빠르게 해 주는 곳을 나눴습니다.</p>
+    <div class="cols flow">
+      <div class="col"><b>주제 찾기</b><span>반응 좋은 소재와 이슈를 매일 모읍니다. 고르는 것은 사람입니다.</span></div>
+      <div class="col"><b>기획과 구조</b><span>제목 후보, 핵심 요약, 글의 뼈대를 함께 짭니다.</span></div>
+      <div class="col"><b>초안 제작</b><span>글, 카드뉴스, 릴스 대본을 정해 둔 형식으로 만듭니다.</span></div>
+      <div class="col"><b>검수와 발행</b><span>사실 확인과 표현은 사람이 봅니다. 발행도 사람이 누릅니다.</span></div>
+      <div class="col"><b>숫자로 복기</b><span>정해진 주기로 반응을 보고 다음 소재에 반영합니다.</span></div>
+    </div>
+  </section>
 
-<section>
-  <h2>제가 콘텐츠를 만드는 방식</h2>
-  <p style="color:var(--mute);margin-bottom:12px">운영하는 블로그와 SNS는 아래 순서로 반복해서 만듭니다. 사람이 판단할 곳과 AI가 빠르게 해 주는 곳을 나눈 것이 핵심입니다.</p>
-  <div class="grid">
-    <div class="card"><b>① 주제 찾기</b><span>반응이 좋은 경쟁 소재와 이슈를 매일 모아 정리합니다. 무엇을 쓸지는 제가 고릅니다.</span></div>
-    <div class="card"><b>② 기획과 구조</b><span>제목 후보, 핵심 요약, 글의 뼈대를 AI와 함께 짭니다. 직접 겪은 내용을 먼저 확인해 넣습니다.</span></div>
-    <div class="card"><b>③ 초안 제작</b><span>정해 둔 형식으로 글, 카드뉴스, 릴스 대본 초안을 만듭니다. 카드뉴스는 표지 디자인 규칙을 고정해 두었습니다.</span></div>
-    <div class="card"><b>④ 사람 검수와 발행</b><span>사실 확인과 표현은 사람이 봅니다. 자동화는 임시저장까지만 하고 발행은 사람이 누릅니다.</span></div>
-    <div class="card"><b>⑤ 숫자로 복기</b><span>정해진 주기로 조회와 반응을 분석하고, 다음 글의 주제와 제목에 반영합니다.</span></div>
-  </div>
-</section>
+  <section class="block">
+    <h2>이렇게 관리합니다</h2>
+    <div class="cols">
+      <div class="col"><b>진행판 한 장</b><span>아이디어마다 상태, 담당, 기다리는 것, 링크를 한 줄로. 막힌 곳이 바로 보입니다.</span></div>
+      <div class="col"><b>역할 분담</b><span>기획, 원고, 영상, 디자인, 광고를 나누고 각자 맡은 일만 합니다.</span></div>
+      <div class="col"><b>브랜드 규칙 문서</b><span>색, 말투, 쓰면 안 되는 표현을 파일로 두고 모든 작업이 먼저 읽습니다.</span></div>
+      <div class="col"><b>성과 기록</b><span>게시물 반응을 주기적으로 기록하고 열린 항목을 목록으로 남깁니다.</span></div>
+    </div>
+  </section>
 
-<section>
-  <h2>카드뉴스와 릴스는 이렇게 만듭니다</h2>
-  <div class="grid">
-    <div class="card"><b>카드뉴스</b><span>원고 → 브랜드별 디자인 규칙(색, 글꼴, 말투 고정) → 화면 시안 → 이미지로 저장 → 검수 → 업로드. 표지 규칙을 미리 정해 두어 몇 장을 만들어도 같은 얼굴이 나옵니다.</span></div>
-    <div class="card"><b>릴스</b><span>기획안 → 나레이션 대본 → 샷 리스트와 자막 → 커버 시안 A/B → 캡션 → 게시. 촬영과 편집은 사람이, 글과 구성은 AI와 함께 합니다.</span></div>
-  </div>
-</section>
+  <section class="block">
+    <h2>일할 때 지키는 기준</h2>
+    <div class="cols">
+      <div class="col"><b>사람이 최종 확인</b><span>공개 전에 담당자가 승인합니다.</span></div>
+      <div class="col"><b>성과를 보장하지 않음</b><span>숫자는 측정한 만큼만 말합니다.</span></div>
+      <div class="col"><b>기준에 어긋나면 만들지 않음</b><span>의료·표시광고 기준에 어긋날 수 있는 소재는 제외합니다.</span></div>
+      <div class="col"><b>개인정보는 다루지 않음</b><span>고객 정보는 소재에 쓰지 않습니다.</span></div>
+    </div>
+  </section>
 
-<section>
-  <h2>콘텐츠는 이렇게 관리합니다</h2>
-  <div class="grid">
-    <div class="card"><b>진행판 한 장</b><span>아이디어마다 브랜드, 채널, 형식, 우선순위, 상태, 담당, 기다리는 것, 기획·초안·게시 링크를 한 줄로 관리합니다. 어디서 막혔는지 바로 보입니다.</span></div>
-    <div class="card"><b>역할 분담</b><span>기획, 원고 제작, 영상 제작, 디자인, 광고를 나누고 각자 맡은 일만 합니다. 소재를 기획하는 쪽과 만드는 쪽이 분리되어 있습니다.</span></div>
-    <div class="card"><b>브랜드 규칙 문서</b><span>브랜드별 색과 말투, 쓰면 안 되는 표현 목록을 파일로 두고 모든 작업이 먼저 읽습니다. 사람이 바뀌어도 기준이 유지됩니다.</span></div>
-    <div class="card"><b>열린 항목과 성과 기록</b><span>미룬 일과 확인할 일을 목록으로 남기고, 게시물 반응 숫자는 정해진 주기로 기록해 다음 소재에 반영합니다.</span></div>
-  </div>
-</section>
-
-<section>
-  <h2>제가 일할 때 지키는 기준</h2>
-  <ul>
-    <li class="rule">사람이 최종 확인합니다. 공개 전에 담당자가 승인합니다.</li>
-    <li class="rule">효과나 성과를 보장하지 않습니다. 숫자는 측정한 만큼만 말합니다.</li>
-    <li class="rule">의료·표시광고 기준에 어긋날 수 있는 소재는 만들지 않습니다.</li>
-    <li class="rule">고객 개인정보는 다루지 않습니다.</li>
-  </ul>
-</section>
-
-<section>
-  <h2>대표님들께 듣고 싶은 것</h2>
-  <p style="color:var(--mute);margin-bottom:12px">제 시각은 한쪽에서 본 것이라, 다른 쪽에서 어떻게 보이는지 듣고 싶습니다.</p>
-  <ol>
-    <li>지금까지 한 일을 보시고 눈에 띄는 점과 아쉬운 점은 무엇인가요?</li>
-    <li>이런 방식이 바디움 같은 사업에서 쓸모가 있다면 어느 부분일까요?</li>
-    <li>이런 일을 하는 사람이나 업체를 볼 때 가장 중요하게 보시는 것은 무엇인가요?</li>
-    <li>숏드라마형 릴스는 어떻게 기획하고 성과를 판단하시나요? 제가 해 본 댓글 유도 릴스와 비교해서 듣고 싶습니다.</li>
-    <li>의료·광고 표현은 현장에서 어떻게 점검하시나요?</li>
-    <li>제가 놓치고 있는 시각이 있다면 무엇일까요?</li>
-  </ol>
-</section>
-
-<small>이 자료는 지금까지의 작업을 소개하기 위한 것입니다.</small>
+  <section class="block">
+    <h2>대표님들께 듣고 싶은 것</h2>
+    <p class="sub">제 시각은 한쪽에서 본 것이라, 다른 쪽에서 어떻게 보이는지 듣고 싶습니다.</p>
+    <div class="cols q">
+      <div class="col"><b>지금까지 한 일에서 눈에 띄는 점과 아쉬운 점은 무엇인가요?</b></div>
+      <div class="col"><b>이런 방식이 바디움 같은 사업에서 쓸모가 있다면 어느 부분일까요?</b></div>
+      <div class="col"><b>이런 일을 하는 사람이나 업체를 볼 때 가장 중요하게 보시는 것은 무엇인가요?</b></div>
+      <div class="col"><b>숏드라마형 릴스는 어떻게 기획하고 성과를 판단하시나요?</b></div>
+      <div class="col"><b>의료·광고 표현은 현장에서 어떻게 점검하시나요?</b></div>
+      <div class="col"><b>제가 놓치고 있는 시각이 있다면 무엇일까요?</b></div>
+    </div>
+  </section>
 </main>
+<footer class="wrap">이 자료는 지금까지의 작업을 소개하기 위한 것입니다.</footer>
+
+<script>
+(function(){
+  var ring=document.getElementById('ring'),scene=document.getElementById('scene'),slides=[].slice.call(ring.children),n=slides.length;
+  var step=360/n,idx=0,theta=0,W=420,H=262,R=300,timer=null,paused=false,dragging=false,moved=0;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var it=document.getElementById('it'),idd=document.getElementById('id'),info=document.getElementById('info'),openA=document.getElementById('open'),dotsEl=document.getElementById('dots');
+  var bgs=[document.getElementById('bgA'),document.getElementById('bgB')],bgi=0;
+  var dots=slides.map(function(s,i){var b=document.createElement('button');b.className='dot';b.setAttribute('aria-label',(i+1)+'번째 보기');b.onclick=function(){go(i)};dotsEl.appendChild(b);return b;});
+  function size(){var vw=Math.min(window.innerWidth,1080);W=Math.min(540,Math.round(vw*0.76));H=Math.round(W*0.62);R=Math.round(((W/2)/Math.tan(Math.PI/n))*1.28)+30;
+    scene.style.setProperty('--w',W+'px');scene.style.setProperty('--h',H+'px');
+    slides.forEach(function(s,i){s.style.setProperty('--w',W+'px');s.style.setProperty('--h',H+'px');s.style.transform='rotateY('+(i*step)+'deg) translateZ('+R+'px)';});
+    apply();}
+  function norm(a){a=((a%360)+360)%360;return a>180?a-360:a;}
+  function apply(){ring.style.transform='translateZ('+(-R)+'px) rotateY('+theta+'deg)';
+    slides.forEach(function(s,i){var a=norm(i*step+theta)*Math.PI/180;var o=0.18+0.82*Math.pow((Math.cos(a)+1)/2,3);s.style.opacity=o.toFixed(2);s.style.pointerEvents=Math.cos(a)>0.3?'auto':'none';});}
+  function active(){return ((Math.round(-theta/step)%n)+n)%n;}
+  var last=-1;
+  function show(){var a=active();dots.forEach(function(d,i){d.classList.toggle('on',i===a)});if(a===last)return;last=a;var s=slides[a];
+    info.classList.add('fade');setTimeout(function(){it.innerHTML=s.dataset.t+'<em class="pill'+(s.dataset.s.indexOf('제작')===0?' wip':'')+'">'+s.dataset.s+'</em>';idd.textContent=s.dataset.d;
+      if(s.dataset.u){openA.href=s.dataset.u;openA.hidden=false}else{openA.hidden=true}info.classList.remove('fade');},reduce?0:220);
+    var nb=bgs[1-bgi],ob=bgs[bgi];nb.style.backgroundImage='url('+s.dataset.img+')';nb.classList.add('on');ob.classList.remove('on');bgi=1-bgi;}
+  function go(i){ // 가장 가까운 방향으로 회전
+    var cur=active(),d=i-cur;if(d>n/2)d-=n;if(d<-n/2)d+=n;theta-=d*step;apply();show();}
+  function next(d){theta-=d*step;apply();show();}
+  function tick(){if(!paused&&!dragging&&!reduce)next(1);}
+  function restart(){clearInterval(timer);if(!reduce)timer=setInterval(tick,4800);}
+  document.getElementById('next').onclick=function(){next(1);restart()};
+  document.getElementById('prev').onclick=function(){next(-1);restart()};
+  scene.addEventListener('mouseenter',function(){paused=true});scene.addEventListener('mouseleave',function(){paused=false});
+  scene.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){next(1);restart()}if(e.key==='ArrowLeft'){next(-1);restart()}});
+  var sx=0,st=0;
+  scene.addEventListener('pointerdown',function(e){dragging=true;moved=0;sx=e.clientX;st=theta;ring.classList.add('nodrag');scene.classList.add('drag');try{scene.setPointerCapture(e.pointerId)}catch(_){}});
+  scene.addEventListener('pointermove',function(e){if(!dragging)return;var dx=e.clientX-sx;moved=Math.max(moved,Math.abs(dx));theta=st+dx*0.28;apply();});
+  function end(){if(!dragging)return;dragging=false;ring.classList.remove('nodrag');scene.classList.remove('drag');theta=-Math.round(-theta/step)*step;apply();show();restart();}
+  scene.addEventListener('pointerup',end);scene.addEventListener('pointercancel',end);
+  slides.forEach(function(s,i){s.addEventListener('click',function(){if(moved>6)return;if(i!==active()){go(i);restart()}else if(s.dataset.u){window.open(s.dataset.u,'_blank','noopener')}})});
+  window.addEventListener('resize',size);size();show();restart();
+})();
+</script>
 </body>
 </html>
