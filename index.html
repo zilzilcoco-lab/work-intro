@@ -319,6 +319,37 @@ a.tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(14,21,38,.14
 .fcard .ic{width:46px;height:46px;padding:10px;border-radius:14px;background:var(--accent-soft);color:var(--accent);display:block;margin-bottom:12px;animation:icp 3.2s ease-in-out infinite;animation-delay:calc(var(--k)*.3s)}
 @keyframes icp{50%{transform:translateY(-3px) scale(1.06)}}
 @media (prefers-reduced-motion:reduce){.fcard .ic{animation:none}}
+
+/* 칸반(진행판) */
+.kb{background:linear-gradient(135deg,#0e1630,#1b2a5c);border-radius:16px;padding:16px;color:#fff;overflow:hidden;position:relative}
+.kb .live{margin-bottom:10px}
+.kcols{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;font-weight:700;font-size:14px;color:#aebbe0;margin-bottom:8px}
+.kcols span{background:rgba(255,255,255,.08);border-radius:8px;padding:6px 0}
+.ktrack{position:relative;height:206px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 24.2%,transparent 24.2% 25%);border-radius:10px}
+.kcard{position:absolute;top:calc(var(--lane)*66px + 6px);left:0;width:23.5%;min-width:0;background:#fff;color:#111;border-radius:10px;padding:8px 10px;font-size:13px;font-weight:700;line-height:1.3;box-shadow:0 6px 16px rgba(0,0,0,.35);animation:kmv 16s linear infinite,kcl 16s linear infinite;animation-delay:var(--d),var(--d)}
+.kcard i{display:block;font-style:normal;font-size:11px;font-weight:700;margin-bottom:3px;color:#2b59ff}
+.kcard i.r2{color:#8a4bd6}.kcard i.r3{color:#d6407a}.kcard i.r4{color:#d9822b}
+.kcard::after{content:"발행 ✓";position:absolute;right:8px;top:8px;font-size:11px;color:#1fa86a;opacity:0;animation:kok 16s linear infinite;animation-delay:var(--d)}
+@keyframes kmv{0%{left:0;opacity:0}3%{opacity:1}94%{opacity:1}100%{left:76.5%;opacity:0}}
+@keyframes kcl{0%,16%{background:#fff}17%,49%{background:#e4ecff}50%,82%{background:#fff0d6}83%,100%{background:#dcf6e8}}
+@keyframes kok{0%,82%{opacity:0}86%,100%{opacity:1}}
+.lgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+.lg{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:2px}
+.lg .ic{width:40px;height:40px;padding:9px;border-radius:12px;background:var(--accent-soft);color:var(--accent);margin-bottom:8px}
+.lg b{font-size:16px}.lg span{color:var(--mute);font-size:14px}
+@media (prefers-reduced-motion:reduce){.kcard{animation:none;left:calc(var(--lane)*25%)}.kcard::after{animation:none}}
+@media (max-width:700px){.kcard{font-size:11px;padding:6px 7px}.ktrack{height:190px}.kcols{font-size:12px}}
+/* 연결 다이어그램 */
+.netw{background:linear-gradient(135deg,#0e1630,#1b2a5c);border-radius:16px;padding:16px;margin-top:18px;color:#fff}
+.netw svg{width:100%;height:auto;display:block;margin-top:6px}
+.ln2 use{fill:none;stroke:#3b4d8f;stroke-width:2.5;stroke-dasharray:6 6;animation:dash 1.4s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-24}}
+.dots2 circle{fill:#9fd0ff;filter:drop-shadow(0 0 6px #6aa8ff)}
+.nd2 rect{fill:#162350;stroke:#5b7cff;stroke-width:2}.nd2 text{fill:#fff;font-size:20px;font-weight:700;font-family:inherit}
+.nd2 .hub{fill:#2b59ff;stroke:#fff}.nd2 .hubt{font-size:26px;font-weight:900}
+.nd2.ceo rect{fill:#fff;stroke:#fff}.nd2.ceo text{fill:#0e1630}
+.lb{fill:#aebbe0;font-size:15px}
+@media (prefers-reduced-motion:reduce){.ln2 use{animation:none}}
 footer{padding-block:40px 56px;color:var(--mute);font-size:13px}
 @media (max-width:700px){.flow .col::after{display:none}.scene{height:clamp(220px,62vw,300px)}}
 @media (prefers-reduced-motion:reduce){.ring{transition:none}.bg{transition:none}a.tile:hover{transform:none}}
@@ -430,6 +461,31 @@ footer{padding-block:40px 56px;color:var(--mute);font-size:13px}
         <div class="team"><b>전략 · 지원</b><em>길잡이와 도구</em><ul><li>사업기획</li><li>자료조사</li><li>부수입</li><li>일정</li><li>미니회사 개발</li><li>체력단련 코치</li></ul></div>
       </div>
     </div>
+    
+    <div class="netw"><span class="live"><u></u>일이 오가는 중</span>
+      <svg viewBox="0 0 800 380" role="img" aria-label="비서실을 가운데에 두고 각 팀이 선으로 연결되어 일을 주고받는 그림">
+        <defs><path id="e1" d="M400 190 L130 70"/><path id="e2" d="M400 190 L130 310"/><path id="e3" d="M400 190 L670 70"/><path id="e4" d="M400 190 L670 310"/><path id="e5" d="M400 190 L400 50"/><path id="e6" d="M400 190 L400 335"/><path id="e7" d="M130 70 L130 310"/><path id="e8" d="M670 70 L670 310"/></defs>
+        <g class="ln2"><use href="#e1"/><use href="#e2"/><use href="#e3"/><use href="#e4"/><use href="#e5"/><use href="#e6"/><use href="#e7"/><use href="#e8"/></g>
+        <g class="dots2">
+          <circle r="5"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0s"><mpath href="#e1"/></animateMotion></circle>
+          <circle r="5"><animateMotion dur="3.6s" repeatCount="indefinite" begin="-1s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#e2"/></animateMotion></circle>
+          <circle r="5"><animateMotion dur="3.4s" repeatCount="indefinite" begin="-2s"><mpath href="#e3"/></animateMotion></circle>
+          <circle r="5"><animateMotion dur="3.8s" repeatCount="indefinite" begin="-0.5s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#e4"/></animateMotion></circle>
+          <circle r="5"><animateMotion dur="2.8s" repeatCount="indefinite" begin="-1.4s"><mpath href="#e5"/></animateMotion></circle>
+          <circle r="5"><animateMotion dur="3s" repeatCount="indefinite" begin="-0.8s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#e6"/></animateMotion></circle>
+          <circle r="5"><animateMotion dur="4s" repeatCount="indefinite" begin="-2.2s"><mpath href="#e7"/></animateMotion></circle>
+          <circle r="5"><animateMotion dur="4.2s" repeatCount="indefinite" begin="-3s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#e8"/></animateMotion></circle>
+        </g>
+        <g class="nd2"><rect x="320" y="160" width="160" height="60" rx="14" class="hub"/><text x="400" y="196" text-anchor="middle" class="hubt">비서실</text></g>
+        <g class="nd2"><rect x="50" y="42" width="160" height="56" rx="12"/><text x="130" y="76" text-anchor="middle">콘텐츠 팀</text></g>
+        <g class="nd2"><rect x="50" y="282" width="160" height="56" rx="12"/><text x="130" y="316" text-anchor="middle">디자인 (공용)</text></g>
+        <g class="nd2"><rect x="590" y="42" width="160" height="56" rx="12"/><text x="670" y="76" text-anchor="middle">pi 팀</text></g>
+        <g class="nd2"><rect x="590" y="282" width="160" height="56" rx="12"/><text x="670" y="316" text-anchor="middle">플랜짐 팀</text></g>
+        <g class="nd2"><rect x="320" y="22" width="160" height="56" rx="12"/><text x="400" y="56" text-anchor="middle">전략 · 지원</text></g>
+        <g class="nd2 ceo"><rect x="320" y="318" width="160" height="50" rx="12"/><text x="400" y="349" text-anchor="middle">대표</text></g>
+        <text x="250" y="118" class="lb">요청</text><text x="530" y="118" class="lb">보고</text><text x="250" y="270" class="lb">시안</text><text x="530" y="270" class="lb">일정</text>
+      </svg>
+    </div>
     <p class="org-note">현재 작업 창이 42개 돌아가고 있습니다(가상 사무실 화면 기준). 일은 열린 항목 목록으로 주고받고, 최종 판단은 사람이 합니다.</p>
   </section>
 
@@ -480,12 +536,12 @@ footer{padding-block:40px 56px;color:var(--mute);font-size:13px}
 
   <section class="block">
     <h2>이렇게 관리합니다</h2>
-    <div class="fgrid">
-      <div class="fcard" style="--k:1"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/></svg><b>진행판 한 장</b><span>아이디어마다 상태, 담당, 기다리는 것, 링크를 한 줄로. 막힌 곳이 바로 보입니다.</span></div>
-      <div class="fcard" style="--k:2"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c3 .3 5 2.5 5 5.8"/></svg><b>역할 분담</b><span>기획, 원고, 영상, 디자인, 광고를 나누고 각자 맡은 일만 합니다.</span></div>
-      <div class="fcard" style="--k:3"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg><b>브랜드 규칙 문서</b><span>색, 말투, 쓰면 안 되는 표현을 파일로 두고 모든 작업이 먼저 읽습니다.</span></div>
-      <div class="fcard" style="--k:4"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><b>성과 기록</b><span>게시물 반응을 주기적으로 기록하고 열린 항목을 목록으로 남깁니다.</span></div>
+    <p class="sub">일이 아이디어에서 발행까지 흘러가는 모습을 한 화면에서 봅니다. 지금도 계속 움직입니다.</p>
+    <div class="kb"><span class="live"><u></u>지금 진행 중</span>
+      <div class="kcols"><span>아이디어</span><span>작성 중</span><span>검수</span><span>발행</span></div>
+      <div class="ktrack"><div class="kcard" style="--lane:0;--d:-0.5s"><i class="r1">기획</i>스포츠 블로그 글</div><div class="kcard" style="--lane:0;--d:-8.5s"><i class="r3">디자인</i>카드뉴스 표지</div><div class="kcard" style="--lane:1;--d:-4s"><i class="r2">원고</i>릴스 대본</div><div class="kcard" style="--lane:1;--d:-12s"><i class="r4">광고</i>광고 소재 A/B</div><div class="kcard" style="--lane:2;--d:-2.5s"><i class="r2">원고</i>재테크 칼럼</div><div class="kcard" style="--lane:2;--d:-10.5s"><i class="r1">기획</i>제품 소개 글</div></div>
     </div>
+    <div class="lgs"><div class="lg"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/></svg><b>진행판 한 장</b><span>상태와 담당을 한 줄로 봅니다</span></div><div class="lg"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c3 .3 5 2.5 5 5.8"/></svg><b>역할 분담</b><span>기획·원고·디자인·광고가 나눠 맡습니다</span></div><div class="lg"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg><b>브랜드 규칙 문서</b><span>색, 말투, 금지 표현을 먼저 읽습니다</span></div><div class="lg"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><b>성과 기록</b><span>반응을 기록해 다음 소재에 반영합니다</span></div></div>
   </section>
 
   <section class="block">
