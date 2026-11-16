@@ -74,6 +74,38 @@ th{font-size:12.5px;color:var(--mute);font-weight:500}
 .help b{display:block;margin-bottom:2px}
 .help p{margin:0;font-size:13.5px;color:var(--mute)}
 .callout{border-left:4px solid var(--acc2);background:var(--soft);padding:12px 14px;border-radius:0 10px 10px 0;font-size:14.5px}
+
+.fix{display:grid;gap:22px}
+.fixhead{background:var(--ink);color:var(--bg);border-radius:14px;padding:20px}
+.fixhead h2{color:var(--bg);font-size:22px}
+.fixhead p{margin:6px 0 0;opacity:.8;font-size:14px}
+.prob{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:start}
+.pn{width:40px;height:40px;border-radius:12px;background:var(--acc2);color:#fff;font:700 18px var(--f-num);display:grid;place-items:center}
+.cmp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+@media(max-width:560px){.cmp{grid-template-columns:minmax(0,1fr)}}
+.cmpbox{background:var(--soft);border-radius:10px;padding:12px}
+.cmpbox .t{font-size:12.5px;color:var(--mute)}
+.hb{display:grid;grid-template-columns:52px minmax(0,1fr) 70px;gap:8px;align-items:center;font-size:13px;margin-top:8px}
+.hb .tr{height:14px;background:var(--line);border-radius:7px;overflow:hidden}
+.hb .fl{height:100%;border-radius:7px;background:var(--acc)}
+.hb .fl.bad{background:var(--acc2)}
+.hb .v{text-align:right;font-family:var(--f-num);font-size:12.5px}
+.days{display:grid;grid-template-columns:repeat(23,minmax(0,1fr));gap:3px;margin-top:12px}
+.days i{aspect-ratio:1;border-radius:3px;background:var(--line)}
+.days i.on{background:var(--acc2)}
+.fun{display:flex;gap:6px;margin-top:12px;align-items:stretch;flex-wrap:wrap}
+.fun div{flex:1 1 90px;border-radius:10px;padding:10px;text-align:center;font-size:13px}
+.fun .k{background:var(--acc);color:#fff}
+.fun .u{background:var(--soft);color:var(--mute);border:2px dashed var(--line)}
+.fun b{display:block;font:700 20px var(--f-num)}
+.road{display:grid;gap:10px;margin-top:12px}
+.step{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.step .sn{width:30px;height:30px;border-radius:50%;background:var(--acc);color:#fff;font:700 14px var(--f-num);display:grid;place-items:center}
+.step b{display:block;font-size:14.5px}
+.step span{font-size:12.5px;color:var(--mute)}
+.tag{font-size:12px;padding:3px 8px;border-radius:20px;background:var(--soft);color:var(--acc);font-weight:700;white-space:nowrap}
+.stack{display:flex;height:34px;border-radius:8px;overflow:hidden;margin-top:8px;font-size:12px;color:#fff;font-weight:700}
+.stack div{display:grid;place-items:center;min-width:0}
 footer{color:var(--mute);font-size:12px;text-align:center}
 </style>
 </head>
@@ -134,6 +166,72 @@ footer{color:var(--mute);font-size:12px;text-align:center}
     <div><b>제작 진행판 자동 갱신</b><p>섭외·기획·촬영·편집·완료 상태를 시트에서 읽어 진행판으로</p></div>
   </div>
   <p class="note">위 네 가지는 제안이에요. 바디움 계정이나 시트에는 아무것도 연결하거나 고치지 않았어요.</p>
+</section>
+
+
+<section class="fix" id="fix">
+<div class="fixhead"><h2>더 잘하려면: 문제 5개와 고칠 순서</h2><p>시트 숫자로 본 것과 추정을 나눠 적었어요. 추정은 따로 표시했어요.</p></div>
+
+<div class="card prob" id="p1"><div class="pn">1</div><div>
+<h2>11월에 성과가 꺾였어요</h2><p class="sub">10월에 잘된 소재를 계속 키워 같은 영상에 사람들이 질렸을 수 있어요 (추정).</p>
+<div class="cmp">
+<div class="cmpbox"><div class="t">하루 평균 신청</div>
+<div class="hb"><span>10월</span><div class="tr"><div class="fl" style="width:100%"></div></div><span class="v">30.5건</span></div>
+<div class="hb"><span>11월</span><div class="tr"><div class="fl bad" style="width:84%"></div></div><span class="v">25.7건</span></div>
+<div class="note">16% 줄었어요</div></div>
+<div class="cmpbox"><div class="t">신청 1건당 비용(CPA)</div>
+<div class="hb"><span>10월</span><div class="tr"><div class="fl" style="width:83%"></div></div><span class="v">15,983원</span></div>
+<div class="hb"><span>11월</span><div class="tr"><div class="fl bad" style="width:100%"></div></div><span class="v">19,240원</span></div>
+<div class="note">20% 올랐어요</div></div>
+</div></div></div>
+
+<div class="card prob" id="p2"><div class="pn">2</div><div>
+<h2>수원점에 돈이 새고 있어요</h2><p class="sub">예산은 세 지점이 똑같은데, 수원은 신청 1건에 두 배 가까이 들어요.</p>
+<div class="cmp">
+<div class="cmpbox"><div class="t">11월 예산 (지점당 월 1천만 원)</div>
+<div class="hb"><span>서초</span><div class="tr"><div class="fl" style="width:100%"></div></div><span class="v">1/3</span></div>
+<div class="hb"><span>잠실</span><div class="tr"><div class="fl" style="width:100%"></div></div><span class="v">1/3</span></div>
+<div class="hb"><span>수원</span><div class="tr"><div class="fl" style="width:100%"></div></div><span class="v">1/3</span></div></div>
+<div class="cmpbox"><div class="t">11월 CPA</div>
+<div class="hb"><span>서초</span><div class="tr"><div class="fl" style="width:60%"></div></div><span class="v">17,687원</span></div>
+<div class="hb"><span>잠실</span><div class="tr"><div class="fl" style="width:53%"></div></div><span class="v">15,611원</span></div>
+<div class="hb"><span>수원</span><div class="tr"><div class="fl bad" style="width:100%"></div></div><span class="v">29,641원</span></div></div>
+</div>
+<div class="cmpbox" style="margin-top:12px"><div class="t">수원에 쓴 약 237만 원을 잠실 효율로 썼다면 (단순 계산)</div>
+<div class="hb"><span>지금</span><div class="tr"><div class="fl bad" style="width:53%"></div></div><span class="v">80건</span></div>
+<div class="hb"><span>옮기면</span><div class="tr"><div class="fl" style="width:100%"></div></div><span class="v">약 152건</span></div>
+<div class="note">11월 전체 신청이 약 19% 늘어나는 셈이에요. 예산을 늘리면 효율은 조금 떨어져요.</div></div>
+</div></div>
+
+<div class="card prob" id="p3"><div class="pn">3</div><div>
+<h2>너무 자주 바꿔요</h2><p class="sub">10/1~11/15, 46일 중 <b>30일</b>에 소재나 예산을 바꿨어요. 주황 칸이 바꾼 날이에요.</p>
+<div class="days" id="days"></div>
+<div class="note">메타는 큰 변경마다 다시 학습해서 비용이 출렁일 수 있어요 (일반적인 내용, 이 계정에서 확인한 건 아님). 변경 기록이 메모 글로만 있어서 어떤 소재가 이겼는지 숫자로 비교할 수 없어요.</div>
+</div></div>
+
+<div class="card prob" id="p4"><div class="pn">4</div><div>
+<h2>신청 뒤가 안 보여요</h2><p class="sub">시트에는 신청까지만 있어요. 싼 신청이 실제 결제로 이어졌는지 알 수 없어요.</p>
+<div class="fun"><div class="k"><b>386</b>신청 (11월)</div><div class="u"><b>?</b>상담</div><div class="u"><b>?</b>방문</div><div class="u"><b>?</b>결제</div></div>
+</div></div>
+
+<div class="card prob" id="p5"><div class="pn">5</div><div>
+<h2>가장 싸게 먹히는 길을 덜 키워요</h2><p class="sub">클릭한 사람 중 신청한 비율(10월). 네이버 브랜드검색이 메타보다 6배 넘게 높아요.</p>
+<div class="hb"><span>검색</span><div class="tr"><div class="fl" style="width:100%"></div></div><span class="v">44.2%</span></div>
+<div class="hb"><span>메타</span><div class="tr"><div class="fl bad" style="width:15%"></div></div><span class="v">6.5%</span></div>
+<div class="note">10/12 인플루언서 릴스가 나간 날, 브랜드검색 신청이 28건 몰렸고 CPA가 8,389원으로 가장 낮았어요. 영상을 보고 "바디움"을 검색하게 만드는 게 제일 싸요.</div>
+</div></div>
+
+<div class="card" id="road">
+<h2>고칠 순서</h2><p class="sub">위에서부터 하면 뒤의 판단이 쉬워져요.</p>
+<div class="road">
+<div class="step"><div class="sn">1</div><div><b>신청 뒤까지 연결</b><span>지점에서 방문·결제 여부만 표시 → 소재별 "결제 1건당 비용"</span></div><span class="tag">기준 만들기</span></div>
+<div class="step"><div class="sn">2</div><div><b>예산을 성과대로</b><span>주 단위로 CPA 좋은 지점에 옮기기, 수원은 원인 찾을 때까지 줄이기</span></div><span class="tag">약 +19%</span></div>
+<div class="step"><div class="sn">3</div><div><b>테스트 규칙</b><span>주 1회만 바꾸기, 소재마다 코드 붙이기, 일정 금액 쓰기 전엔 끄지 않기</span></div><span class="tag">위닝 소재 고르기</span></div>
+<div class="step"><div class="sn">4</div><div><b>검색을 부르는 콘텐츠</b><span>인플루언서 릴스를 늘리고 브랜드검색과 묶어서 보기</span></div><span class="tag">가장 싼 신청</span></div>
+<div class="step"><div class="sn">5</div><div><b>매일 자동 정리</b><span>1~4를 클로드가 매일 아침 정리 → 판단이 하루 빨라짐</span></div><span class="tag">속도</span></div>
+</div>
+<p class="note">주의: 준비 중인 GLP-1 파일럿 5건은 메타 정책상 처방약 이름과 전후 사진이 제한될 가능성이 커요. 촬영 전에 정책 확인이 필요해요. "두 배"는 약속하는 숫자가 아니라, 2번만으로 약 19%가 계산되고 나머지가 더해질 여지가 있다는 뜻이에요.</p>
+</div>
 </section>
 
 <footer>원본: 바디움 퍼포먼스 통합 공유 시트, 크리에이터 리스트 및 캠페인 현황 (2026-11-16 읽음)</footer>
@@ -278,6 +376,12 @@ K.forEach(function(c){var col=document.createElement('div');col.className='col';
  kb.appendChild(col)});
 var kn=document.createElement('p');kn.className='note';kn.textContent='취소 1건(산후 체형, 개인 사정) 별도. 완료 날짜는 최종 영상 날짜예요.';document.getElementById('content').appendChild(kn);
 
+
+var dg=document.getElementById('days');
+var on={1:1,2:1,5:1,6:1,8:1,11:1,12:1,13:1,14:1,15:1,16:1,19:1,20:1,21:1,22:1,23:1,25:1,26:1,27:1,28:1,29:1};
+var on2={2:1,3:1,4:1,5:1,6:1,7:1,10:1,11:1,13:1};
+for(var i=1;i<=31;i++){var e=document.createElement('i');if(on[i])e.className='on';e.title='10/'+i;dg.appendChild(e)}
+for(var j=1;j<=15;j++){var e2=document.createElement('i');if(on2[j])e2.className='on';e2.title='11/'+j;dg.appendChild(e2)}
 function draw(){monthly();daily()}
 draw();
 var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){css=getComputedStyle(document.documentElement);draw()},150)});
